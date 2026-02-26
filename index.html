@@ -29,95 +29,97 @@ html,body{background:var(--void);font-family:var(--B);color:var(--text);min-heig
     radial-gradient(1px 1px at 22% 4%,rgba(255,255,255,.7) 0%,transparent 1px),
     radial-gradient(2px 2px at 63% 6%,rgba(255,255,255,.8) 0%,transparent 2px),
     radial-gradient(1.5px 1.5px at 88% 3%,rgba(255,255,255,.6) 0%,transparent 1.5px),
-    radial-gradient(1px 1px at 41% 2%,rgba(219,168,74,.5) 0%,transparent 1px),
     radial-gradient(2px 2px at 73% 35%,rgba(255,255,255,.5) 0%,transparent 2px),
-    radial-gradient(1.5px 1.5px at 4% 68%,rgba(219,168,74,.55) 0%,transparent 1.5px),
-    radial-gradient(1px 1px at 58% 80%,rgba(255,255,255,.45) 0%,transparent 1px)}
+    radial-gradient(1.5px 1.5px at 4% 68%,rgba(219,168,74,.55) 0%,transparent 1.5px)}
 #app{position:relative;z-index:1;min-height:100vh}
 .screen{display:none}.screen.active{display:block}
+
+/* NAV */
 nav{position:sticky;top:0;z-index:200;height:58px;padding:0 20px;
   display:flex;align-items:center;justify-content:space-between;
   background:rgba(3,2,8,.93);border-bottom:1px solid rgba(219,168,74,.15);backdrop-filter:blur(14px)}
-.logo{font-family:var(--T);font-size:19px;color:var(--gold);
-  text-shadow:0 0 22px rgba(219,168,74,.55);cursor:pointer;letter-spacing:1px}
+.logo{font-family:var(--T);font-size:19px;color:var(--gold);cursor:pointer;letter-spacing:1px}
 .logo em{color:var(--ember2);font-style:normal}
 .nav-btns{display:flex;gap:4px}
 .nb{padding:6px 14px;border:1px solid transparent;border-radius:5px;
   background:transparent;color:var(--textD);font-family:var(--S);font-size:12px;cursor:pointer;transition:all .22s}
 .nb:hover,.nb.on{color:var(--gold);border-color:rgba(219,168,74,.4);background:rgba(219,168,74,.08)}
-.nb.adm{color:var(--teal)}.nb.adm:hover,.nb.adm.on{color:var(--tealL);border-color:rgba(23,168,144,.4);background:rgba(23,168,144,.07)}
-.nav-r{display:flex;align-items:center;gap:12px}
+.nb.adm:hover,.nb.adm.on{color:var(--tealL);border-color:rgba(23,168,144,.4);background:rgba(23,168,144,.07)}
+.nav-r{display:flex;align-items:center;gap:10px}
 .nav-pts{font-family:var(--S);font-size:14px;color:var(--gold)}
 .nav-av{width:34px;height:34px;border-radius:50%;border:2px solid var(--goldD);display:grid;place-items:center;font-size:17px}
+.profile-badge{padding:4px 12px;border-radius:20px;font-family:var(--S);font-size:11px;border:1px solid}
+
+/* PANELS */
 .pnl{background:linear-gradient(150deg,var(--panel),rgba(7,4,15,.98));
-  border:1px solid rgba(219,168,74,.13);border-radius:14px;padding:20px;
-  box-shadow:0 6px 36px rgba(0,0,0,.5)}
+  border:1px solid rgba(219,168,74,.13);border-radius:14px;padding:20px}
 .pnl-t{font-family:var(--S);font-size:11px;font-weight:700;letter-spacing:2px;
   text-transform:uppercase;color:var(--goldD);margin-bottom:16px;
   padding-bottom:9px;border-bottom:1px solid rgba(219,168,74,.1)}
 .pnl-t.tl{color:var(--teal);border-bottom-color:rgba(23,168,144,.13)}
 .divL{height:1px;background:rgba(219,168,74,.09);margin:13px 0}
+
+/* BARS */
 .bw{margin-bottom:3px}
 .bl{display:flex;justify-content:space-between;font-family:var(--S);font-size:10px;color:var(--textD);margin-bottom:4px}
 .bt{height:7px;background:rgba(255,255,255,.07);border-radius:4px;overflow:hidden}
-.bf{height:100%;border-radius:4px;transition:width .6s cubic-bezier(.4,0,.2,1)}
+.bf{height:100%;border-radius:4px;transition:width .6s}
 .hp{background:linear-gradient(90deg,var(--blood),var(--ember2))}
 .xp{background:linear-gradient(90deg,var(--sage),var(--sageL))}
 .prg{background:linear-gradient(90deg,var(--violet),var(--gold))}
 .nmy{background:linear-gradient(90deg,var(--violet),#d850f0)}
+
+/* BUTTONS */
 .bgold{padding:12px 32px;background:linear-gradient(135deg,var(--goldD),var(--gold));
   border:none;border-radius:6px;color:var(--void);font-family:var(--T);font-size:14px;
   cursor:pointer;transition:all .28s;box-shadow:0 5px 22px rgba(219,168,74,.25)}
-.bgold:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 9px 28px rgba(219,168,74,.4)}
+.bgold:hover:not(:disabled){transform:translateY(-2px)}
 .bgold:disabled{opacity:.35;cursor:not-allowed}
 .bemb{padding:12px 28px;background:linear-gradient(135deg,var(--blood),var(--ember));
-  border:none;border-radius:6px;color:#fff;font-family:var(--T);font-size:13px;
-  cursor:pointer;transition:all .28s}
+  border:none;border-radius:6px;color:#fff;font-family:var(--T);font-size:13px;cursor:pointer;transition:all .28s}
 .bemb:hover{transform:translateY(-2px)}
 .bteal{padding:12px 28px;background:linear-gradient(135deg,#0d6e5d,var(--teal));
-  border:none;border-radius:6px;color:var(--void);font-family:var(--T);font-size:13px;
-  cursor:pointer;transition:all .28s}
+  border:none;border-radius:6px;color:var(--void);font-family:var(--T);font-size:13px;cursor:pointer;transition:all .28s}
 .bteal:hover{transform:translateY(-2px)}
 
-/* LOGIN */
-#s-login{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px}
-.drag{font-size:96px;margin-bottom:26px;line-height:1;
-  filter:drop-shadow(0 0 40px rgba(194,69,16,.75));
-  animation:dragF 3.8s ease-in-out infinite}
-@keyframes dragF{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-16px) scale(1.05)}}
-.login-T{font-family:var(--T);font-size:clamp(40px,8vw,76px);color:var(--gold);text-align:center;
-  text-shadow:0 0 50px rgba(219,168,74,.5);line-height:1.1;margin-bottom:8px}
+/* ══ PROFILE SELECT ══ */
+#s-profiles{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px}
+.drag{font-size:96px;margin-bottom:26px;filter:drop-shadow(0 0 40px rgba(194,69,16,.75));animation:dragF 3.8s ease-in-out infinite}
+@keyframes dragF{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+.login-T{font-family:var(--T);font-size:clamp(36px,7vw,70px);color:var(--gold);text-align:center;margin-bottom:8px;text-shadow:0 0 50px rgba(219,168,74,.5)}
 .login-T em{color:var(--ember2);font-style:normal}
-.login-sub{font-family:var(--S);font-size:12px;letter-spacing:4px;color:var(--textD);
-  text-transform:uppercase;text-align:center;margin-bottom:48px}
-.login-card{background:linear-gradient(145deg,rgba(19,12,38,.98),rgba(7,4,15,.98));
-  border:1px solid rgba(219,168,74,.22);border-radius:20px;padding:44px 40px;
-  width:100%;max-width:400px;text-align:center;
-  box-shadow:0 0 70px rgba(92,34,138,.2),0 36px 72px rgba(0,0,0,.6)}
-.login-card h2{font-family:var(--T);color:var(--gold);font-size:22px;margin-bottom:8px}
-.login-card p{color:var(--textD);font-size:14px;margin-bottom:32px;font-style:italic}
-.gsig{display:flex;align-items:center;justify-content:center;gap:12px;
-  width:100%;padding:15px 22px;border-radius:10px;
-  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.15);
-  color:var(--text);font-size:15px;font-family:var(--B);cursor:pointer;transition:all .3s}
-.gsig:hover{background:rgba(219,168,74,.07);border-color:rgba(219,168,74,.4)}
-.feats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:28px}
-.feat{background:rgba(255,255,255,.03);border:1px solid rgba(219,168,74,.09);
-  border-radius:8px;padding:12px 10px;font-size:12px;color:var(--textD);text-align:center}
-.feat .fi{display:block;font-size:18px;margin-bottom:5px}
+.login-sub{font-family:var(--S);font-size:12px;letter-spacing:4px;color:var(--textD);text-transform:uppercase;text-align:center;margin-bottom:48px}
+.profiles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;width:100%;max-width:760px;margin-bottom:32px}
+.profile-card{background:linear-gradient(145deg,rgba(19,12,38,.95),rgba(7,4,15,.98));
+  border:2px solid rgba(219,168,74,.15);border-radius:18px;padding:32px 24px;
+  text-align:center;cursor:pointer;transition:all .35s;position:relative;overflow:hidden}
+.profile-card::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .35s}
+.profile-card:hover{transform:translateY(-6px);border-color:rgba(219,168,74,.5)}
+.profile-card:hover::before{opacity:1}
+.profile-card.yoav::before{background:radial-gradient(ellipse at 50% 0%,rgba(219,168,74,.07) 0%,transparent 70%)}
+.profile-card.omer::before{background:radial-gradient(ellipse at 50% 0%,rgba(92,34,138,.1) 0%,transparent 70%)}
+.profile-card.noa::before{background:radial-gradient(ellipse at 50% 0%,rgba(23,168,144,.08) 0%,transparent 70%)}
+.pc-emoji{font-size:70px;display:block;margin-bottom:14px;transition:transform .35s}
+.profile-card:hover .pc-emoji{transform:scale(1.1)}
+.pc-name{font-family:var(--T);font-size:22px;margin-bottom:5px}
+.profile-card.yoav .pc-name{color:var(--gold)}
+.profile-card.omer .pc-name{color:var(--violetL, #8b4fd0)}
+.profile-card.noa .pc-name{color:var(--tealL)}
+.pc-level{font-family:var(--S);font-size:10px;color:var(--textD);letter-spacing:2px;text-transform:uppercase;margin-bottom:14px}
+.pc-topics{display:flex;flex-wrap:wrap;gap:5px;justify-content:center}
+.pc-tag{padding:3px 9px;border-radius:3px;font-size:10px;font-family:var(--S);letter-spacing:.5px}
 
-/* CHAR SELECT */
+/* ══ CHAR SELECT ══ */
 #s-char{padding:36px 28px;max-width:1060px;margin:0 auto}
 .pgT{font-family:var(--T);font-size:32px;color:var(--gold);text-align:center;margin-bottom:7px}
 .pgS{font-family:var(--S);font-size:12px;letter-spacing:3px;color:var(--textD);text-transform:uppercase;text-align:center;margin-bottom:42px}
 .cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;margin-bottom:36px}
 .cc{background:linear-gradient(160deg,rgba(19,12,38,.92),rgba(7,4,15,.96));
-  border:2px solid rgba(219,168,74,.11);border-radius:14px;
-  padding:28px 20px;text-align:center;cursor:pointer;transition:all .38s;position:relative}
-.cc:hover{border-color:rgba(219,168,74,.42);transform:translateY(-5px);box-shadow:0 22px 56px rgba(0,0,0,.6)}
+  border:2px solid rgba(219,168,74,.11);border-radius:14px;padding:28px 20px;
+  text-align:center;cursor:pointer;transition:all .38s;position:relative}
+.cc:hover{border-color:rgba(219,168,74,.42);transform:translateY(-5px)}
 .cc.sel{border-color:var(--gold);box-shadow:0 0 0 3px rgba(219,168,74,.14)}
-.cc-badge{position:absolute;top:10px;left:10px;background:var(--gold);
-  color:var(--void);font-family:var(--S);font-size:9px;font-weight:700;padding:2px 8px;border-radius:3px}
+.cc-badge{position:absolute;top:10px;left:10px;background:var(--gold);color:var(--void);font-family:var(--S);font-size:9px;font-weight:700;padding:2px 8px;border-radius:3px}
 .cc-icon{font-size:66px;display:block;margin-bottom:12px;transition:transform .38s}
 .cc:hover .cc-icon{transform:scale(1.08)}
 .cc-name{font-family:var(--T);font-size:19px;color:var(--gold);margin-bottom:3px}
@@ -129,18 +131,16 @@ nav{position:sticky;top:0;z-index:200;height:58px;padding:0 20px;
 .csb{flex:1;height:3px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden}
 .csf{height:100%;border-radius:2px}
 
-/* GAME */
+/* ══ GAME ══ */
 #s-game{padding:20px 24px;max-width:1260px;margin:0 auto}
-.glay{display:grid;grid-template-columns:248px 1fr 248px;gap:18px;align-items:start}
+.glay{display:grid;grid-template-columns:240px 1fr 240px;gap:18px;align-items:start}
 .hero-c{text-align:center;margin-bottom:18px}
 .hero-ic{font-size:62px;display:block;margin-bottom:8px;animation:hGlow 3s ease-in-out infinite}
 @keyframes hGlow{0%,100%{filter:drop-shadow(0 0 18px rgba(219,168,74,.4))}50%{filter:drop-shadow(0 0 28px rgba(219,168,74,.68))}}
 .hero-n{font-family:var(--T);color:var(--gold);font-size:18px}
 .hero-k{font-family:var(--S);font-size:10px;color:var(--ember2);letter-spacing:2px}
 .kv{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px;font-family:var(--S);font-size:12px}
-.kvk{color:var(--textD)}.kvv{color:var(--gold)}.kvv.g{color:var(--sageL)}
-.pwraps{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
-.pchip{padding:4px 10px;border-radius:4px;border:1px solid;font-family:var(--S);font-size:10px}
+.kvk{color:var(--textD)}.kvv{color:var(--gold)}
 .arena{background:linear-gradient(170deg,rgba(19,12,38,.96),rgba(3,2,8,.99));
   border:1px solid rgba(219,168,74,.16);border-radius:14px;padding:28px 24px;
   display:flex;flex-direction:column;align-items:center;position:relative;overflow:hidden}
@@ -157,140 +157,108 @@ nav{position:sticky;top:0;z-index:200;height:58px;padding:0 20px;
 .ftnm{font-family:var(--S);color:var(--text);font-size:12px;font-weight:700}
 .ftbr{width:128px}
 .vs{font-family:var(--T);font-size:30px;color:var(--ember2);text-shadow:0 0 18px var(--ember);flex-shrink:0}
-.blog{background:rgba(0,0,0,.42);border:1px solid rgba(219,168,74,.09);
-  border-radius:10px;padding:14px 18px;width:100%;margin-bottom:20px;min-height:68px}
+.blog{background:rgba(0,0,0,.42);border:1px solid rgba(219,168,74,.09);border-radius:10px;padding:14px 18px;width:100%;margin-bottom:20px;min-height:68px}
 .blogt{font-size:14px;line-height:1.65;color:var(--text);font-style:italic}
 .blogt .g{color:var(--gold);font-style:normal}.blogt .f{color:var(--ember2);font-style:normal}.blogt .gr{color:var(--sageL);font-style:normal}
 .abtns{display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap;justify-content:center}
 .prgsec{width:100%}
 .prgl{display:flex;justify-content:space-between;font-family:var(--S);font-size:10px;color:var(--textD);margin-bottom:7px}
 .prgnodes{display:flex;justify-content:space-between;margin-top:9px}
-.pnode{width:16px;height:16px;border-radius:50%;border:2px solid rgba(219,168,74,.18);
-  background:var(--void);display:grid;place-items:center;font-size:8px;transition:all .4s}
+.pnode{width:16px;height:16px;border-radius:50%;border:2px solid rgba(219,168,74,.18);background:var(--void);display:grid;place-items:center;font-size:8px;transition:all .4s}
 .pnode.done{border-color:var(--gold);background:var(--goldD);color:var(--void)}
 .pnode.now{border-color:var(--ember2);animation:pls 1.2s infinite}
 @keyframes pls{0%,100%{box-shadow:0 0 10px var(--ember)}50%{box-shadow:0 0 20px var(--ember2)}}
 .qo{display:flex;align-items:flex-start;gap:8px;margin-bottom:11px}
-.qo-ck{font-size:15px;flex-shrink:0;margin-top:1px}
-.qo-tx{font-size:12px;line-height:1.45}
+.qo-ck{font-size:15px;flex-shrink:0}.qo-tx{font-size:12px;line-height:1.45}
 .qo-tx.done{color:var(--sageL)}.qo-tx.pend{color:var(--textD)}
-.rwbx{text-align:center;padding:16px 0}
-.rwic{font-size:48px;margin-bottom:6px;display:block}
-.rwnm{font-family:var(--T);color:var(--gold);font-size:13px;margin-bottom:3px}
-.rwdist{color:var(--textD);font-size:11px;font-style:italic}
 
-/* MODAL */
-.overlay{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:600;
-  display:none;align-items:center;justify-content:center;padding:18px;backdrop-filter:blur(12px)}
+/* ══ MODAL ══ */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:600;display:none;align-items:center;justify-content:center;padding:18px;backdrop-filter:blur(12px)}
 .overlay.open{display:flex}
 .modal{background:linear-gradient(145deg,rgba(19,12,38,.99),rgba(7,4,15,.99));
   border:1px solid rgba(219,168,74,.26);border-radius:20px;padding:36px 40px;
-  width:100%;max-width:680px;max-height:92vh;overflow-y:auto}
-.mhead{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:26px}
+  width:100%;max-width:720px;max-height:92vh;overflow-y:auto}
+.mhead{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:22px}
 .mtype{font-family:var(--S);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--ember2)}
 .mmeta{font-family:var(--S);font-size:11px;color:var(--textD);margin-top:3px}
-.mclose{width:30px;height:30px;border:1px solid rgba(219,168,74,.22);border-radius:5px;
-  background:transparent;color:var(--textD);cursor:pointer;font-size:15px}
+.mclose{width:30px;height:30px;border:1px solid rgba(219,168,74,.22);border-radius:5px;background:transparent;color:var(--textD);cursor:pointer;font-size:15px}
 .mclose:hover{border-color:var(--gold);color:var(--gold)}
-.passage{background:rgba(0,0,0,.32);border:1px solid rgba(219,168,74,.1);border-radius:10px;padding:20px 22px;margin-bottom:24px}
+
+/* PASSAGE */
+.passage{background:rgba(0,0,0,.32);border:1px solid rgba(219,168,74,.1);border-radius:10px;padding:20px 22px;margin-bottom:22px}
 .pasT{font-family:var(--T);color:var(--gold);font-size:17px;margin-bottom:10px}
-.pasTx{font-size:15px;line-height:1.8}
-.exQ{font-size:20px;color:var(--text);line-height:1.5;margin-bottom:26px;font-style:italic}
+.pasTx{font-size:15px;line-height:1.85;direction:ltr;text-align:left}
+
+/* QUESTION */
+.exQ{font-size:18px;color:var(--text);line-height:1.5;margin-bottom:22px;font-style:italic}
 .exQ strong{color:var(--gold2);font-style:normal}
-.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
+.qtype-label{font-family:var(--S);font-size:10px;letter-spacing:2px;color:var(--teal);text-transform:uppercase;margin-bottom:10px}
+
+/* MC OPTIONS */
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}
 .opt{padding:14px 17px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.11);
   border-radius:10px;color:var(--text);font-size:14px;cursor:pointer;
-  transition:all .28s;font-family:var(--B);text-align:right;width:100%}
+  transition:all .28s;font-family:var(--B);text-align:right;width:100%;direction:ltr;text-align:left}
 .opt:hover:not([disabled]){background:rgba(219,168,74,.07);border-color:rgba(219,168,74,.42);color:var(--gold)}
 .opt.cor{background:rgba(50,128,96,.17)!important;border-color:var(--sageL)!important;color:var(--sageL)!important}
 .opt.wrg{background:rgba(122,21,21,.17)!important;border-color:var(--bloodL)!important;color:var(--bloodL)!important}
-.fbk{padding:15px 18px;border-radius:10px;margin-bottom:20px;font-size:14px;line-height:1.6}
+
+/* TRUE/FALSE */
+.tf-opts{display:flex;gap:12px;margin-bottom:18px;justify-content:center}
+.tf-btn{padding:16px 40px;border-radius:10px;font-family:var(--T);font-size:16px;cursor:pointer;transition:all .28s;border:2px solid}
+.tf-btn.true-btn{border-color:rgba(50,128,96,.4);background:rgba(50,128,96,.08);color:var(--sageL)}
+.tf-btn.false-btn{border-color:rgba(122,21,21,.4);background:rgba(122,21,21,.08);color:var(--bloodL)}
+.tf-btn:hover:not([disabled]){transform:translateY(-2px);filter:brightness(1.2)}
+.tf-btn.cor{background:rgba(50,128,96,.25)!important;border-color:var(--sageL)!important}
+.tf-btn.wrg{background:rgba(122,21,21,.25)!important;border-color:var(--bloodL)!important}
+
+/* WORD DRAG */
+.drag-area{margin-bottom:18px}
+.drag-sentence{min-height:52px;padding:12px 16px;background:rgba(0,0,0,.35);
+  border:2px dashed rgba(219,168,74,.3);border-radius:10px;
+  display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px;
+  direction:ltr;transition:border-color .2s}
+.drag-sentence.drag-over{border-color:var(--gold);background:rgba(219,168,74,.05)}
+.drag-sentence-label{font-family:var(--S);font-size:10px;color:var(--textD);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px}
+.word-bank{display:flex;flex-wrap:wrap;gap:8px;padding:14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:10px;direction:ltr;min-height:52px}
+.word-chip{padding:8px 14px;background:rgba(219,168,74,.1);border:1px solid rgba(219,168,74,.3);
+  border-radius:6px;color:var(--gold);font-size:14px;cursor:grab;font-family:var(--B);
+  transition:all .2s;user-select:none;direction:ltr}
+.word-chip:hover{background:rgba(219,168,74,.2);transform:translateY(-2px)}
+.word-chip.dragging{opacity:.4;transform:scale(0.95)}
+.word-chip.placed{background:rgba(23,168,144,.1);border-color:rgba(23,168,144,.4);color:var(--tealL);cursor:grab}
+.word-chip.placed:hover{background:rgba(23,168,144,.2)}
+.drag-check{margin-top:12px}
+
+/* FEEDBACK */
+.fbk{padding:15px 18px;border-radius:10px;margin-bottom:18px;font-size:14px;line-height:1.6}
 .fbk.cor{background:rgba(50,128,96,.1);border:1px solid var(--sageL);color:var(--sageL)}
 .fbk.wrg{background:rgba(122,21,21,.1);border:1px solid var(--bloodL);color:var(--bloodL)}
+
+/* LOADING */
 .ldg{text-align:center;padding:52px 36px}
 .ldgic{font-size:68px;animation:spin 4s linear infinite;display:block;margin-bottom:18px}
 @keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
 .ldgT{font-family:var(--T);color:var(--gold);font-size:20px;margin-bottom:10px}
 .ldgS{color:var(--textD);font-style:italic;font-size:14px}
 
-/* SHOP */
-#s-shop{padding:28px 24px;max-width:1180px;margin:0 auto}
-.shop-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:26px;flex-wrap:wrap;gap:12px}
-.shop-cats{display:flex;gap:8px}
-.scat{padding:8px 20px;border:1px solid rgba(219,168,74,.17);border-radius:5px;
-  background:transparent;color:var(--textD);font-family:var(--S);font-size:12px;cursor:pointer;transition:all .22s}
-.scat:hover,.scat.on{border-color:var(--gold);color:var(--gold);background:rgba(219,168,74,.07)}
-.igrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:16px}
-.si{background:linear-gradient(145deg,rgba(19,12,38,.92),rgba(7,4,15,.96));
-  border:1px solid rgba(219,168,74,.11);border-radius:13px;padding:22px 18px;text-align:center;transition:all .32s}
-.si:hover{border-color:rgba(219,168,74,.38);transform:translateY(-5px)}
-.si-ic{font-size:50px;margin-bottom:10px;display:block}
-.si-nm{font-family:var(--S);font-weight:700;color:var(--text);font-size:14px;margin-bottom:5px}
-.si-ds{font-size:12px;color:var(--textD);line-height:1.45;margin-bottom:12px;font-style:italic}
-.si-pr{font-family:var(--S);color:var(--gold);font-size:14px;margin-bottom:10px}
-.sib{width:100%;padding:8px;border:1px solid;border-radius:5px;font-family:var(--S);
-  font-size:11px;letter-spacing:1px;cursor:pointer;transition:all .22s;text-transform:uppercase}
-.sib.can{border-color:rgba(219,168,74,.42);background:rgba(219,168,74,.07);color:var(--gold)}
-.sib.can:hover{background:rgba(219,168,74,.15)}
-.sib.own{border-color:rgba(80,171,125,.42);background:rgba(80,171,125,.07);color:var(--sageL);cursor:default}
-.sib.no{border-color:rgba(255,255,255,.08);color:var(--textD);cursor:default;opacity:.45}
-
-/* ADMIN */
-#s-admin{padding:28px 24px;max-width:1380px;margin:0 auto}
-.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px}
-.kpi{background:linear-gradient(145deg,rgba(19,12,38,.92),rgba(7,4,15,.96));border:1px solid rgba(23,168,144,.16);border-radius:13px;padding:20px}
-.kpi-v{font-family:var(--T);font-size:38px;color:var(--tealL);line-height:1;margin-bottom:6px}
-.kpi-l{font-family:var(--S);font-size:10px;color:var(--textD);letter-spacing:2px;text-transform:uppercase}
-.atabs{display:flex;gap:6px;margin-bottom:22px}
-.at{padding:8px 20px;border:1px solid rgba(23,168,144,.16);border-radius:5px;
-  background:transparent;color:var(--textD);font-family:var(--S);font-size:11px;letter-spacing:1px;cursor:pointer;transition:all .22s;text-transform:uppercase}
-.at:hover,.at.on{border-color:var(--teal);color:var(--tealL);background:rgba(23,168,144,.07)}
-.dtable{width:100%;border-collapse:collapse}
-.dtable th{font-family:var(--S);font-size:10px;color:var(--teal);letter-spacing:2px;text-transform:uppercase;padding:10px 14px;text-align:right;border-bottom:1px solid rgba(23,168,144,.16);white-space:nowrap}
-.dtable td{padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.04);font-size:13px}
-.dtable tr:hover td{background:rgba(23,168,144,.03)}
-.acc{display:inline-block;padding:2px 9px;border-radius:3px;font-size:11px;font-family:var(--S)}
-.acc.hi{background:rgba(50,128,96,.18);color:var(--sageL)}.acc.md{background:rgba(219,168,74,.14);color:var(--gold)}.acc.lo{background:rgba(122,21,21,.18);color:var(--bloodL)}
-.tbtn{padding:4px 11px;border-radius:3px;font-family:var(--S);font-size:10px;letter-spacing:1px;cursor:pointer;transition:all .18s;text-transform:uppercase}
-.tbtn.vw{border:1px solid rgba(219,168,74,.32);background:transparent;color:var(--gold)}.tbtn.vw:hover{background:rgba(219,168,74,.1)}
-.tbtn.rs{border:1px solid rgba(122,21,21,.35);background:transparent;color:var(--bloodL);margin-left:5px}.tbtn.rs:hover{background:rgba(122,21,21,.1)}
-.tskfm{background:rgba(0,0,0,.22);border:1px solid rgba(23,168,144,.16);border-radius:13px;padding:26px;margin-bottom:18px}
-label.fl{display:block;font-family:var(--S);font-size:10px;color:var(--teal);letter-spacing:2px;text-transform:uppercase;margin-bottom:7px}
-input.fi,select.fs,textarea.fta{width:100%;padding:11px 15px;background:rgba(255,255,255,.04);border:1px solid rgba(23,168,144,.18);border-radius:6px;color:var(--text);font-size:14px;font-family:var(--B);transition:all .28s;direction:rtl}
-input.fi:focus,select.fs:focus,textarea.fta:focus{outline:none;border-color:var(--teal)}
-select.fs option{background:#07040f}
-textarea.fta{height:120px;resize:vertical}
-.fg{margin-bottom:18px}
-.fdrop{border:2px dashed rgba(23,168,144,.22);border-radius:10px;padding:24px;text-align:center;cursor:pointer;color:var(--textD);font-size:13px;font-style:italic}
-.trow{background:rgba(0,0,0,.22);border:1px solid rgba(23,168,144,.1);border-radius:10px;padding:14px 20px;display:flex;align-items:center;gap:14px;margin-bottom:10px}
-.tyb{padding:3px 10px;border-radius:3px;font-family:var(--S);font-size:10px;letter-spacing:1px;text-transform:uppercase;white-space:nowrap}
-.tyb.gr{background:rgba(219,168,74,.1);color:var(--gold);border:1px solid rgba(219,168,74,.22)}
-.tyb.rd{background:rgba(50,128,96,.1);color:var(--sageL);border:1px solid rgba(50,128,96,.22)}
-.tnm{flex:1;font-size:14px}.tmeta{font-family:var(--S);font-size:11px;color:var(--textD);white-space:nowrap}
-.ainote{background:rgba(23,168,144,.06);border:1px solid rgba(23,168,144,.18);border-radius:10px;padding:16px 18px;color:var(--tealL);font-size:13px;font-family:var(--S);line-height:1.6}
+/* API BANNER */
+.api-banner{background:rgba(219,168,74,.08);border-bottom:1px solid rgba(219,168,74,.2);
+  padding:10px 20px;font-family:var(--S);font-size:12px;color:var(--gold);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.api-input{flex:1;min-width:200px;padding:6px 12px;background:rgba(0,0,0,.4);border:1px solid rgba(219,168,74,.3);border-radius:5px;color:var(--text);font-size:12px;font-family:var(--B)}
+.api-save{padding:6px 16px;background:rgba(219,168,74,.15);border:1px solid var(--goldD);border-radius:5px;color:var(--gold);font-family:var(--S);font-size:11px;cursor:pointer}
+.api-save:hover{background:rgba(219,168,74,.25)}
 
 /* TOAST */
 #toast{position:fixed;top:70px;left:20px;z-index:900;padding:13px 20px;border-radius:10px;
-  font-family:var(--S);font-size:13px;max-width:320px;box-shadow:0 7px 28px rgba(0,0,0,.6);
-  display:none;animation:tIn .3s ease}
+  font-family:var(--S);font-size:13px;max-width:320px;display:none;animation:tIn .3s ease}
 @keyframes tIn{from{transform:translateX(-70px);opacity:0}to{transform:translateX(0);opacity:1}}
 #toast.gold{background:linear-gradient(135deg,rgba(19,12,38,.99),rgba(7,4,15,.99));border:1px solid var(--gold);color:var(--gold)}
 #toast.green{background:linear-gradient(135deg,rgba(19,12,38,.99),rgba(7,4,15,.99));border:1px solid var(--sageL);color:var(--sageL)}
 #toast.red{background:linear-gradient(135deg,rgba(19,12,38,.99),rgba(7,4,15,.99));border:1px solid var(--bloodL);color:var(--bloodL)}
 
-/* API KEY INPUT */
-.api-banner{background:rgba(219,168,74,.08);border-bottom:1px solid rgba(219,168,74,.2);
-  padding:10px 20px;font-family:var(--S);font-size:12px;color:var(--gold);
-  display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.api-input{flex:1;min-width:200px;padding:6px 12px;background:rgba(0,0,0,.4);
-  border:1px solid rgba(219,168,74,.3);border-radius:5px;color:var(--text);font-size:12px;font-family:var(--B)}
-.api-input:focus{outline:none;border-color:var(--gold)}
-.api-save{padding:6px 16px;background:rgba(219,168,74,.15);border:1px solid var(--goldD);
-  border-radius:5px;color:var(--gold);font-family:var(--S);font-size:11px;cursor:pointer}
-.api-save:hover{background:rgba(219,168,74,.25)}
-
-@media(max-width:980px){.glay{grid-template-columns:1fr}.kpis{grid-template-columns:1fr 1fr}.opts{grid-template-columns:1fr}}
-@media(max-width:620px){.cgrid{grid-template-columns:1fr 1fr}.modal{padding:24px 18px}.fts{gap:14px}.ftic{font-size:58px}}
+@media(max-width:980px){.glay{grid-template-columns:1fr}.opts{grid-template-columns:1fr}}
+@media(max-width:620px){.cgrid{grid-template-columns:1fr 1fr}.modal{padding:24px 18px}.profiles-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -308,176 +276,206 @@ textarea.fta{height:120px;resize:vertical}
 </div>
 
 <div id="app">
-  <div id="s-login" class="screen active">
-    <div class="drag">🐉</div>
-    <h1 class="login-T">English<em>Quest</em></h1>
-    <p class="login-sub">שלוט בשפה · הרוס את הדרקון · כבוש את הגביע</p>
-    <div class="login-card">
-      <h2>התחל/י את מסעך</h2>
-      <p>לחץ/י כדי להיכנס לממלכה</p>
-      <button class="gsig" onclick="doLogin()">
-        <svg width="20" height="20" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20H24v8h11.3C33.7 33.6 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3 0 5.7 1.1 7.8 2.9l5.7-5.7C34.1 6.5 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20c11 0 20-9 20-20 0-1.3-.1-2.7-.4-4z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.5 16 19 13 24 13c3 0 5.7 1.1 7.8 2.9l5.7-5.7C34.1 6.5 29.3 4 24 4 16.3 4 9.7 8.4 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.3 35.3 26.8 36 24 36c-5.2 0-9.7-3.3-11.3-8L6 33.1C9.4 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20H24v8h11.3c-.8 2.3-2.3 4.3-4.2 5.6l6.2 5.2C41 35.3 44 30.1 44 24c0-1.3-.1-2.7-.4-4z"/></svg>
-        כנס/י למשחק
-      </button>
-      <div class="feats">
-        <div class="feat"><span class="fi">⚔️</span>קרב דרקונים</div>
-        <div class="feat"><span class="fi">📚</span>תרגול אנגלית</div>
-        <div class="feat"><span class="fi">🏪</span>חנות כוחות</div>
-        <div class="feat"><span class="fi">🏆</span>גביע קדוש</div>
+
+<!-- ══ PROFILE SELECT ══ -->
+<div id="s-profiles" class="screen active">
+  <div class="drag">🐉</div>
+  <h1 class="login-T">English<em>Quest</em></h1>
+  <p class="login-sub">מי משחק עכשיו?</p>
+  <div class="profiles-grid">
+    <div class="profile-card yoav" onclick="selectProfile('yoav')">
+      <span class="pc-emoji">🏀</span>
+      <div class="pc-name">יואב</div>
+      <div class="pc-level">רמה בינונית-גבוהה · בן 12</div>
+      <div class="pc-topics">
+        <span class="pc-tag" style="background:rgba(219,168,74,.12);color:var(--gold);border:1px solid rgba(219,168,74,.25)">כדורסל</span>
+        <span class="pc-tag" style="background:rgba(219,168,74,.12);color:var(--gold);border:1px solid rgba(219,168,74,.25)">יזמות</span>
+        <span class="pc-tag" style="background:rgba(219,168,74,.12);color:var(--gold);border:1px solid rgba(219,168,74,.25)">המצאות</span>
+      </div>
+    </div>
+    <div class="profile-card omer" onclick="selectProfile('omer')">
+      <span class="pc-emoji">🧙</span>
+      <div class="pc-name">עומר</div>
+      <div class="pc-level">רמה בינונית · בן 12</div>
+      <div class="pc-topics">
+        <span class="pc-tag" style="background:rgba(139,79,208,.12);color:#8b4fd0;border:1px solid rgba(139,79,208,.25)">דרקונים</span>
+        <span class="pc-tag" style="background:rgba(139,79,208,.12);color:#8b4fd0;border:1px solid rgba(139,79,208,.25)">הרפתקאות</span>
+        <span class="pc-tag" style="background:rgba(139,79,208,.12);color:#8b4fd0;border:1px solid rgba(139,79,208,.25)">כדורעף</span>
+      </div>
+    </div>
+    <div class="profile-card noa" onclick="selectProfile('noa')">
+      <span class="pc-emoji">⭐</span>
+      <div class="pc-name">נועה</div>
+      <div class="pc-level">מתחילה · בת 9</div>
+      <div class="pc-topics">
+        <span class="pc-tag" style="background:rgba(23,168,144,.1);color:var(--tealL);border:1px solid rgba(23,168,144,.25)">צבעים</span>
+        <span class="pc-tag" style="background:rgba(23,168,144,.1);color:var(--tealL);border:1px solid rgba(23,168,144,.25)">אוכל</span>
+        <span class="pc-tag" style="background:rgba(23,168,144,.1);color:var(--tealL);border:1px solid rgba(23,168,144,.25)">תחבורה</span>
       </div>
     </div>
   </div>
-
-  <div id="s-char" class="screen">
-    <nav><div class="logo">English<em>Quest</em></div><div></div><div></div></nav>
-    <div style="padding:36px 28px;max-width:1060px;margin:0 auto">
-      <h1 class="pgT">בחר/י את האלוף/ת שלך</h1>
-      <p class="pgS">גיבור זה ילחם בדרקונים וישאף לגביע הקדוש בשמך</p>
-      <div class="cgrid" id="chars-grid"></div>
-      <div style="text-align:center"><button class="bgold" id="start-btn" disabled onclick="doStart()">כנס/י לממלכה →</button></div>
-    </div>
-  </div>
-
-  <div id="s-game" class="screen">
-    <nav>
-      <div class="logo" onclick="goTo('game')">English<em>Quest</em></div>
-      <div class="nav-btns">
-        <button class="nb on" onclick="goTo('game')">⚔️ מסע</button>
-        <button class="nb" onclick="goTo('shop')">🏪 חנות</button>
-        <button class="nb adm" onclick="goTo('admin')">⚙️ ניהול</button>
-      </div>
-      <div class="nav-r">
-        <div class="nav-pts" id="nav-pts">⭐ 840</div>
-        <div class="nav-av" id="nav-av">🧙</div>
-      </div>
-    </nav>
-    <div class="api-banner">
-      <span>🔑 Claude API Key:</span>
-      <input class="api-input" id="api-key-input" type="password" placeholder="sk-ant-api03-...">
+  <div style="text-align:center">
+    <div class="api-banner" style="border-radius:12px;display:inline-flex;margin:0 auto">
+      <span>🔑 API Key:</span>
+      <input class="api-input" id="api-key-input" type="password" placeholder="sk-ant-api03-..." style="min-width:260px">
       <button class="api-save" onclick="saveApiKey()">שמור</button>
       <span id="api-status" style="font-size:11px;color:var(--sageL)"></span>
-    </div>
-    <div style="padding:20px 24px;max-width:1260px;margin:0 auto">
-      <div class="glay">
-        <div class="pnl" id="player-panel"></div>
-        <div class="arena" id="arena-panel"></div>
-        <div class="pnl" id="quest-panel"></div>
-      </div>
-    </div>
-  </div>
-
-  <div id="s-shop" class="screen">
-    <nav>
-      <div class="logo" onclick="goTo('game')">English<em>Quest</em></div>
-      <div class="nav-btns">
-        <button class="nb" onclick="goTo('game')">⚔️ מסע</button>
-        <button class="nb on" onclick="goTo('shop')">🏪 חנות</button>
-        <button class="nb adm" onclick="goTo('admin')">⚙️ ניהול</button>
-      </div>
-      <div class="nav-r"><div class="nav-pts" id="shop-pts">⭐ 840</div></div>
-    </nav>
-    <div style="padding:28px 24px;max-width:1180px;margin:0 auto">
-      <h1 class="pgT">🏪 הממכר הארקני</h1>
-      <p class="pgS">השתמש/י בנקודות שצברת לרכישת פריטים אגדיים</p>
-      <div class="shop-hd">
-        <div class="shop-cats">
-          <button class="scat on" id="cat-skins" onclick="setShopCat('skins')">🎨 קוסמטיקה</button>
-          <button class="scat" id="cat-powers" onclick="setShopCat('powers')">⚡ כוחות</button>
-        </div>
-        <div style="font-family:var(--S);font-size:15px;color:var(--gold)">⭐ <span id="shop-bal-num">840</span> נקודות</div>
-      </div>
-      <div class="igrid" id="shop-grid"></div>
-    </div>
-  </div>
-
-  <div id="s-admin" class="screen">
-    <nav>
-      <div class="logo" onclick="goTo('game')">English<em>Quest</em></div>
-      <div class="nav-btns">
-        <button class="nb" onclick="goTo('game')">⚔️ מסע</button>
-        <button class="nb" onclick="goTo('shop')">🏪 חנות</button>
-        <button class="nb adm on" onclick="goTo('admin')">⚙️ ניהול</button>
-      </div>
-      <div></div>
-    </nav>
-    <div style="padding:28px 24px;max-width:1380px;margin:0 auto">
-      <h1 class="pgT" style="color:var(--tealL)">⚙️ מרכז פקודה</h1>
-      <p class="pgS" style="color:var(--teal)">נהל/י משימות ועקוב/י אחרי גיבורים</p>
-      <div class="kpis">
-        <div class="kpi"><div class="kpi-v">4</div><div class="kpi-l">גיבורים פעילים</div></div>
-        <div class="kpi"><div class="kpi-v">77%</div><div class="kpi-l">דיוק ממוצע</div></div>
-        <div class="kpi"><div class="kpi-v">48</div><div class="kpi-l">דקות יומיות</div></div>
-        <div class="kpi"><div class="kpi-v">3</div><div class="kpi-l">משימות פעילות</div></div>
-      </div>
-      <div class="atabs">
-        <button class="at on" id="at-users" onclick="setAdminTab('users')">👥 גיבורים</button>
-        <button class="at" id="at-tasks" onclick="setAdminTab('tasks')">📋 משימות</button>
-        <button class="at" id="at-create" onclick="setAdminTab('create')">➕ משימה חדשה</button>
-      </div>
-      <div id="admin-content"></div>
     </div>
   </div>
 </div>
 
+<!-- ══ CHAR SELECT ══ -->
+<div id="s-char" class="screen">
+  <nav><div class="logo">English<em>Quest</em></div><div></div>
+    <div id="profile-nav-badge"></div>
+  </nav>
+  <div style="padding:36px 28px;max-width:1060px;margin:0 auto">
+    <h1 class="pgT">בחר/י את הגיבור/ה שלך</h1>
+    <p class="pgS">הדמות שתלחם בדרקונים בשמך</p>
+    <div class="cgrid" id="chars-grid"></div>
+    <div style="text-align:center"><button class="bgold" id="start-btn" disabled onclick="doStart()">כנס/י לממלכה →</button></div>
+  </div>
+</div>
+
+<!-- ══ GAME ══ -->
+<div id="s-game" class="screen">
+  <nav>
+    <div class="logo" onclick="goTo('game')">English<em>Quest</em></div>
+    <div class="nav-btns">
+      <button class="nb on" onclick="goTo('game')">⚔️ מסע</button>
+      <button class="nb" onclick="goTo('profiles')">👤 החלף</button>
+    </div>
+    <div class="nav-r">
+      <div class="nav-pts" id="nav-pts">⭐ 0</div>
+      <div class="nav-av" id="nav-av">🧙</div>
+    </div>
+  </nav>
+  <div style="padding:20px 24px;max-width:1260px;margin:0 auto">
+    <div class="glay">
+      <div class="pnl" id="player-panel"></div>
+      <div class="arena" id="arena-panel"></div>
+      <div class="pnl" id="quest-panel"></div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end app -->
+
 <script>
-const CHARS=[
-  {id:"mage",emoji:"🧙",name:"אלדריק",cls:"מאגוס קרב",desc:"שולט בלחשים ארקניים, מניף חרב ומטיל קסמים בעת ובעונה אחת.",stats:{כוח:78,קסם:96,מהירות:60},c:["#dba84a","#8b4fd0"]},
-  {id:"elf",emoji:"🧝‍♀️",name:"סילארה",cls:"רנג׳ר צללים",desc:"קשתת אלפית זריזה, נעה בין הצללים ואינה ניתנת לתפיסה.",stats:{כוח:68,קסם:60,מהירות:98},c:["#50ab7d","#17a890"]},
-  {id:"war",emoji:"⚔️",name:"ברום",cls:"לורד ברזל",desc:"לוחם ברברי שזעמו הפך אותו לכוח טבעי בלתי ניתן לעצירה.",stats:{כוח:98,קסם:35,מהירות:63},c:["#c24510","#ff6933"]},
-  {id:"sorx",emoji:"🔮",name:"זפירה",cls:"כוהנת הריק",desc:"מפרת את מרקם המציאות, שולטת בכוחות האפלים של הריק.",stats:{כוח:50,קסם:99,מהירות:79},c:["#5c228a","#d850f0"]},
-];
-const ENEMIES=[
-  {name:"איגנראקס המשרף",emoji:"🐉",hp:100,map:"מישורי האפר",lore:"דרקון עתיק ששרף שלוש ממלכות. מחפש קורבן חדש."},
-  {name:"ורתול הקפוא",emoji:"🦕",hp:130,map:"תהום הקרח",lore:"לוויתן קרח שנשימתו מקפיאה צבאות שלמים."},
-];
-const SHOP_DATA={
-  skins:[
-    {id:"sk1",emoji:"👑",name:"כתר האגדות",desc:"עוטר ראשו של הורג-דרקונים",price:150},
-    {id:"sk2",emoji:"🛡️",name:"מגן כוכבים",desc:"נוצק מחומר כוכבים שנפלו",price:220},
-    {id:"sk3",emoji:"🌟",name:"אאורה של תהילה",desc:"זוהר זהוב עוטף את גיבורך",price:310},
-    {id:"sk4",emoji:"🔥",name:"גלימת אש",desc:"גלימה מאש חיה שאינה כלה",price:265},
-    {id:"sk5",emoji:"💎",name:"שריון גביש",desc:"שריון יהלום שאינו מתנפץ",price:420},
-    {id:"sk6",emoji:"🌙",name:"גלימת ירח",desc:"נארגה מקרני ירח ממש",price:375},
-  ],
-  powers:[
-    {id:"pw1",emoji:"⚡",name:"גלשן ברק",desc:"+15 נזק מיידי כברק",price:200,c:"#dba84a"},
-    {id:"pw2",emoji:"🧊",name:"כבילת קרח",desc:"מקפיא אויב 2 תורות",price:260,c:"#17a890"},
-    {id:"pw3",emoji:"🦅",name:"כנפי איקרוס",desc:"עף מעל 3 התקפות",price:300,c:"#50ab7d"},
-    {id:"pw4",emoji:"🌪️",name:"קרע סופה",desc:"להב מסתחרר — פגיעה משולשת",price:290,c:"#8b4fd0"},
-    {id:"pw5",emoji:"🌋",name:"ליבת מגמה",desc:"+20 נזק אש",price:340,c:"#ff6933"},
-    {id:"pw6",emoji:"🔮",name:"שבר זמן",desc:"השב תשובה אחת שגויה חינם",price:420,c:"#d850f0"},
-  ]
-};
-const USERS=[
-  {name:"נועה כהן",email:"noa@gmail.com",min:24,tasks:12,ok:9,acc:75,pts:840},
-  {name:"יוסף לוי",email:"yosef@gmail.com",min:8,tasks:5,ok:3,acc:60,pts:320},
-  {name:"מאיה רונן",email:"maya@gmail.com",min:45,tasks:28,ok:25,acc:89,pts:1540},
-  {name:"אבי בן-דוד",email:"avi@gmail.com",min:0,tasks:3,ok:2,acc:67,pts:180},
-];
-const TASKS_DATA=[
-  {type:"grammar",name:"Present Simple vs. Progressive",cnt:50,date:"15 ינואר"},
-  {type:"reading",name:"The Amazon Rainforest",cnt:50,date:"18 ינואר"},
-  {type:"grammar",name:"Modal Verbs: can / could / would",cnt:50,date:"22 ינואר"},
-];
-const SMP_GR=[
-  {question:"She ___ to school every morning.",options:["go","goes","going","gone"],answer:"goes",explanation:"עם גוף שלישי יחיד (she/he/it) בהווה פשוט — מוסיפים ‑s לפועל."},
-  {question:"They ___ playing when it started to rain.",options:["are","were","is","was"],answer:"were",explanation:"עבר מתמשך עם they: were + verb‑ing."},
-  {question:"This is ___ book I have ever read.",options:["good","better","the best","best"],answer:"the best",explanation:"על-על: the + adjective-est. 'The best' הצורה העל-עלית של 'good'."},
-  {question:"Which sentence is correct?",options:["I have saw it.","I has seen it.","I have seen it.","I did see it."],answer:"I have seen it.",explanation:"Present perfect: have + past participle. 'Seen' היא פ\"ע של see."},
-  {question:"I ___ my homework yet.",options:["didn't finished","hasn't finished","haven't finished","don't finished"],answer:"haven't finished",explanation:"'Yet' → Present perfect שלילי: haven't + past participle."},
-];
-const SMP_RD=[
-  {passage:{title:"The Lost City of Aerthon",text:"Deep in the Emerald Forest lay the ruins of Aerthon, a city from two thousand years ago. Its people built flying machines powered by magic crystals. When enemies stole their most dangerous weapon, the Aerthonians destroyed their own city rather than let its secrets be misused. Today, archaeologists dig through the ruins hoping to recover the lost knowledge."},question:"Why did the Aerthonians destroy their city?",options:["Enemies burned it down","To protect dangerous secrets","To build a better one","Their machines exploded"],answer:"To protect dangerous secrets",explanation:"הטקסט אומר: 'rather than let its secrets be misused'."},
-  {passage:{title:"Dolphins Talk to Each Other",text:"Scientists discovered that dolphins use clicks and whistles as a kind of language. Every dolphin has a signature whistle that works like its name. When two dolphins meet, they exchange whistles to introduce themselves. Amazingly, a dolphin can remember another's whistle even after 20 years apart."},question:"What is a dolphin's signature whistle?",options:["A danger warning","Its unique name-sound","A mating call","A sound to find fish"],answer:"Its unique name-sound",explanation:"הטקסט אומר שהשריקה 'works like its name' — כמו שם ייחודי."},
-];
-
-let G={
-  char:null,selChar:null,pts:840,hp:85,eHp:72,xp:57,prog:18,eIdx:0,
-  blog:"הדרקון איגנראקס ניעור משנת מאות שנים... המסע על הגביע הקדוש מתחיל!",
-  owned:["pw1"],shopCat:"skins",adminTab:"users",
-  exs:[],exI:0,chosen:null,showFb:false,isOk:false,loading:false,pType:"grammar",apiKey:""
+/* ═══════════ PROFILES ═══════════ */
+const PROFILES = {
+  yoav: {
+    name: "יואב", emoji: "🏀", color: "#dba84a",
+    level: "intermediate-high", age: 12,
+    topics: ["basketball","entrepreneurship","inventions and inventors","technology","science"],
+    grammar: ["Present Simple","Present Continuous","Yes/No questions","WH questions (What/Where/Who/When)"],
+    passageStyle: "engaging story or article about basketball players, famous inventors, or startup founders",
+    openQuestions: true,
+    enemies: [
+      {name:"Shadow Defender",emoji:"🛡️",map:"The Invention Arena"},
+      {name:"The Dark Coach",emoji:"🏀",map:"Startup Dungeon"},
+    ]
+  },
+  omer: {
+    name: "עומר", emoji: "🧙", color: "#8b4fd0",
+    level: "intermediate", age: 12,
+    topics: ["dungeons and dragons","magic","adventures and quests","riddles","volleyball"],
+    grammar: ["Present Simple","Present Continuous","Yes/No questions","WH questions"],
+    passageStyle: "fantasy adventure story with dragons, wizards, or volleyball heroes",
+    openQuestions: true,
+    enemies: [
+      {name:"The Dark Dragon",emoji:"🐉",map:"Dragon's Dungeon"},
+      {name:"Shadow Wizard",emoji:"🔮",map:"Enchanted Labyrinth"},
+    ]
+  },
+  noa: {
+    name: "נועה", emoji: "⭐", color: "#22d9bc",
+    level: "beginner", age: 9,
+    topics: ["colors","food","transport","animals","school"],
+    grammar: ["Reading simple sentences","True/False","Multiple choice"],
+    passageStyle: "very simple short paragraph about colors, food, or transport using basic vocabulary only",
+    openQuestions: false,
+    enemies: [
+      {name:"Color Dragon",emoji:"🌈",map:"Rainbow Forest"},
+      {name:"Food Monster",emoji:"🍕",map:"Yummy Dungeon"},
+    ]
+  }
 };
 
+const CHARS = [
+  {id:"mage",emoji:"🧙",name:"אלדריק",cls:"מאגוס קרב",desc:"שולט בלחשים ארקניים, מניף חרב ומטיל קסמים.",stats:{כוח:78,קסם:96,מהירות:60},c:["#dba84a","#8b4fd0"]},
+  {id:"elf",emoji:"🧝‍♀️",name:"סילארה",cls:"רנג׳ר צללים",desc:"קשתת אלפית זריזה, נעה בין הצללים.",stats:{כוח:68,קסם:60,מהירות:98},c:["#50ab7d","#17a890"]},
+  {id:"war",emoji:"⚔️",name:"ברום",cls:"לורד ברזל",desc:"לוחם ברברי שזעמו הפך לכוח בלתי ניתן לעצירה.",stats:{כוח:98,קסם:35,מהירות:63},c:["#c24510","#ff6933"]},
+  {id:"sorx",emoji:"🔮",name:"זפירה",cls:"כוהנת הריק",desc:"מפרת את מרקם המציאות, שולטת בכוחות האפלים.",stats:{כוח:50,קסם:99,מהירות:79},c:["#5c228a","#d850f0"]},
+];
+
+/* fallback exercises per profile */
+const FALLBACK = {
+  yoav: {
+    passage: {
+      title: "Michael Jordan — The Greatest",
+      text: "Michael Jordan is playing basketball every day. He is running fast on the court. His team is winning the game. Jordan is shooting the ball into the basket. The fans are cheering loudly. Is Jordan the best player? Yes, he is!"
+    },
+    mc: [
+      {q:"What is Jordan doing every day?",opts:["swimming","playing basketball","reading books","cooking"],ans:"playing basketball",exp:"המשפט הראשון אומר: 'Michael Jordan is playing basketball every day.'"},
+      {q:"Is Jordan's team winning?",opts:["Yes, it is.","No, it isn't.","We don't know.","Maybe."],ans:"Yes, it is.",exp:"הטקסט אומר: 'His team is winning the game.'"},
+    ],
+    tf: [
+      {q:"Jordan is running fast on the court.",ans:true,exp:"נכון! הטקסט אומר 'He is running fast on the court.'"},
+      {q:"Jordan is swimming in a pool.",ans:false,exp:"לא נכון. Jordan משחק כדורסל, לא שוחה."},
+    ],
+    drag: [
+      {words:["Jordan","is","playing","basketball","now"],answer:"Jordan is playing basketball now",exp:"הווה מתמשך: Jordan + is + playing + basketball + now"},
+      {words:["The","team","is","winning","today"],answer:"The team is winning today",exp:"The team is winning today — הצוות מנצח היום."},
+    ]
+  },
+  omer: {
+    passage: {
+      title: "The Dragon's Riddle",
+      text: "A dragon is sleeping in a dark cave. The wizard is walking slowly to the cave. He is looking for a magic sword. The dragon opens one eye. 'Who is coming to my cave?' asks the dragon. The wizard is thinking of an answer."
+    },
+    mc: [
+      {q:"Where is the dragon sleeping?",opts:["in a forest","in a cave","in a castle","in a river"],ans:"in a cave",exp:"הטקסט אומר: 'A dragon is sleeping in a dark cave.'"},
+      {q:"What is the wizard looking for?",opts:["gold coins","a magic sword","a dragon egg","a map"],ans:"a magic sword",exp:"הטקסט אומר: 'He is looking for a magic sword.'"},
+    ],
+    tf: [
+      {q:"The dragon is sleeping in a castle.",ans:false,exp:"לא נכון. הדרקון ישן במערה (cave), לא בטירה."},
+      {q:"The wizard is walking to the cave.",ans:true,exp:"נכון! הטקסט אומר 'The wizard is walking slowly to the cave.'"},
+    ],
+    drag: [
+      {words:["The","wizard","is","walking","slowly"],answer:"The wizard is walking slowly",exp:"הווה מתמשך: The wizard + is + walking + slowly"},
+      {words:["Where","is","the","dragon","sleeping"],answer:"Where is the dragon sleeping",exp:"שאלת WH: Where + is + the dragon + sleeping?"},
+    ]
+  },
+  noa: {
+    passage: {
+      title: "Colors and Food",
+      text: "I see a red apple. The banana is yellow. The car is blue. I like green vegetables. The bus is big and orange."
+    },
+    mc: [
+      {q:"What color is the apple?",opts:["yellow","blue","red","green"],ans:"red",explanation:"הטקסט אומר: 'I see a red apple.'"},
+      {q:"What color is the banana?",opts:["red","yellow","blue","orange"],ans:"yellow",exp:"הטקסט אומר: 'The banana is yellow.'"},
+    ],
+    tf: [
+      {q:"The apple is red.",ans:true,exp:"נכון! The apple is red."},
+      {q:"The car is green.",ans:false,exp:"לא נכון. The car is blue."},
+    ],
+    drag: null
+  }
+};
+
+/* ═══════════ STATE ═══════════ */
+let G = {
+  profile: null, char: null, selChar: null,
+  pts: 0, hp: 100, eHp: 100, xp: 0, prog: 0, eIdx: 0,
+  blog: "המסע מתחיל...",
+  exs: [], exI: 0, exType: null,
+  chosen: null, showFb: false, isOk: false,
+  dragWords: [], dragPlaced: [],
+  apiKey: ""
+};
+
+/* ═══════════ UTILS ═══════════ */
 let toastTimer;
 function showToast(msg,type="gold"){
   const t=document.getElementById("toast");
@@ -488,19 +486,29 @@ function goTo(sc){
   document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
   document.getElementById("s-"+sc).classList.add("active");
   if(sc==="game")renderGame();
-  if(sc==="shop")renderShop();
-  if(sc==="admin")renderAdmin();
+  if(sc==="profiles"){G.profile=null;G.char=null;}
   window.scrollTo(0,0);
 }
 function saveApiKey(){
   G.apiKey=document.getElementById("api-key-input").value.trim();
-  if(G.apiKey){document.getElementById("api-status").textContent="✅ שמור";showToast("✅ API Key נשמר!","green");}
+  if(G.apiKey){document.getElementById("api-status").textContent="✅";showToast("✅ API Key נשמר!","green");}
 }
-function doLogin(){
-  document.getElementById("s-login").classList.remove("active");
+
+/* ═══════════ PROFILE SELECT ═══════════ */
+function selectProfile(pid){
+  G.profile = PROFILES[pid];
+  G.pts=0;G.hp=100;G.eHp=100;G.xp=0;G.prog=0;G.eIdx=0;
+  G.blog=`ברוך הבא ${G.profile.name}! המסע מתחיל...`;
+  document.getElementById("profile-nav-badge").innerHTML=`
+    <span class="profile-badge" style="border-color:${G.profile.color};color:${G.profile.color}">
+      ${G.profile.emoji} ${G.profile.name}
+    </span>`;
+  document.getElementById("s-profiles").classList.remove("active");
   document.getElementById("s-char").classList.add("active");
-  renderChars();showToast("✨ ברוכה הבאה, גיבורה אמיצה!");
+  renderChars();
 }
+
+/* ═══════════ CHAR SELECT ═══════════ */
 function renderChars(){
   document.getElementById("chars-grid").innerHTML=CHARS.map(c=>`
     <div class="cc ${G.selChar?.id===c.id?'sel':''}" onclick="selChar('${c.id}')">
@@ -515,206 +523,375 @@ function renderChars(){
     </div>`).join("");
 }
 function selChar(id){G.selChar=CHARS.find(c=>c.id===id);document.getElementById("start-btn").disabled=false;renderChars();}
-function doStart(){if(!G.selChar)return;G.char=G.selChar;goTo("game");showToast(`⚔️ ${G.char.name} מוכנה לקרב!`,"green");}
+function doStart(){
+  if(!G.selChar||!G.profile)return;
+  G.char=G.selChar;
+  goTo("game");
+  showToast(`⚔️ ${G.profile.name} + ${G.char.name} — יאללה!`,"green");
+}
 
+/* ═══════════ GAME RENDER ═══════════ */
 function renderGame(){
-  if(!G.char)return;
-  const enemy=ENEMIES[G.eIdx];
-  document.getElementById("nav-pts").textContent=`⭐ ${G.pts.toLocaleString()}`;
+  if(!G.char||!G.profile)return;
+  const enemies=G.profile.enemies;
+  const enemy=enemies[G.eIdx%enemies.length];
+  document.getElementById("nav-pts").textContent=`⭐ ${G.pts}`;
   document.getElementById("nav-av").textContent=G.char.emoji;
-  const pwrs=G.owned.filter(id=>SHOP_DATA.powers.find(p=>p.id===id))
-    .map(id=>{const p=SHOP_DATA.powers.find(x=>x.id===id);return `<div class="pchip" style="border-color:${p.c};color:${p.c};background:${p.c}18">${p.emoji} ${p.name.split(" ")[0]}</div>`;}).join("");
+
   document.getElementById("player-panel").innerHTML=`
-    <div class="pnl-t">האלוף/ת שלך</div>
-    <div class="hero-c"><span class="hero-ic">${G.char.emoji}</span>
-    <div class="hero-n">${G.char.name}</div><div class="hero-k">${G.char.cls}</div></div>
+    <div class="pnl-t">הגיבור/ה שלך</div>
+    <div class="hero-c">
+      <span class="hero-ic">${G.char.emoji}</span>
+      <div class="hero-n">${G.char.name}</div>
+      <div class="hero-k">${G.profile.name} · ${G.char.cls}</div>
+    </div>
     <div class="bw"><div class="bl"><span>HP</span><span>${G.hp}/100</span></div><div class="bt"><div class="bf hp" style="width:${G.hp}%"></div></div></div>
-    <div class="bw" style="margin-top:9px;margin-bottom:14px"><div class="bl"><span>XP</span><span>${G.xp}/100</span></div><div class="bt"><div class="bf xp" style="width:${G.xp}%"></div></div></div>
+    <div class="bw" style="margin:9px 0 14px"><div class="bl"><span>XP</span><span>${G.xp}/100</span></div><div class="bt"><div class="bf xp" style="width:${G.xp}%"></div></div></div>
     <div class="divL"></div>
-    <div class="kv"><span class="kvk">רמה</span><span class="kvv">⭐ 7</span></div>
-    <div class="kv"><span class="kvk">נקודות</span><span class="kvv">🏆 ${G.pts.toLocaleString()}</span></div>
-    <div class="kv"><span class="kvk">מפה</span><span class="kvv">${enemy.map}</span></div>
-    <div class="kv"><span class="kvk">רצף 🔥</span><span class="kvv">7 ימים</span></div>
-    <div class="divL"></div>
-    <div class="pnl-t">כוחות פעילים</div>
-    <div class="pwraps">${pwrs||'<span style="font-size:11px;color:var(--textD);font-style:italic">אין כוחות — קנה בחנות</span>'}</div>`;
-  const nodes=Array.from({length:10},(_,i)=>{const d=G.prog>=(i+1)*5,n=G.prog>=i*5+1&&G.prog<(i+1)*5;return `<div class="pnode ${d?'done':n?'now':''}">${d?'✓':''}</div>`;}).join("");
+    <div class="kv"><span class="kvk">נקודות</span><span class="kvv">🏆 ${G.pts}</span></div>
+    <div class="kv"><span class="kvk">מפה</span><span class="kvv" style="font-size:10px">${enemy.map}</span></div>`;
+
+  const nodes=Array.from({length:10},(_,i)=>{const d=G.prog>=(i+1)*2,n=G.prog>=i*2&&G.prog<(i+1)*2;return `<div class="pnode ${d?'done':n?'now':''}">${d?'✓':''}</div>`;}).join("");
+
   document.getElementById("arena-panel").innerHTML=`
-    <div class="arT">⚔️ הזירה הגדולה</div>
-    <div class="arM">מפה ${G.eIdx+1} · ${enemy.map}</div>
+    <div class="arT">⚔️ הזירה</div>
+    <div class="arM">${enemy.map}</div>
     <div class="fts">
       <div class="ft"><span class="ftic pl">${G.char.emoji}</span><div class="ftnm">${G.char.name}</div>
-        <div class="ftbr"><div class="bl"><span>HP</span><span>${G.hp}%</span></div><div class="bt"><div class="bf hp" style="width:${G.hp}%"></div></div></div></div>
+        <div class="ftbr"><div class="bl"><span>HP</span><span>${G.hp}</span></div><div class="bt"><div class="bf hp" style="width:${G.hp}%"></div></div></div></div>
       <div class="vs">VS</div>
       <div class="ft"><span class="ftic">${enemy.emoji}</span><div class="ftnm">${enemy.name}</div>
-        <div class="ftbr"><div class="bl"><span>HP</span><span>${G.eHp}%</span></div><div class="bt"><div class="bf nmy" style="width:${G.eHp}%"></div></div></div></div>
+        <div class="ftbr"><div class="bl"><span>HP</span><span>${G.eHp}</span></div><div class="bt"><div class="bf nmy" style="width:${G.eHp}%"></div></div></div></div>
     </div>
     <div class="blog"><div class="blogt">${G.blog}</div></div>
     <div class="abtns">
-      <button class="bemb" onclick="startPractice('grammar')">⚔️ קרב דקדוק</button>
-      <button class="bteal" onclick="startPractice('reading')">📖 מסע קריאה</button>
+      <button class="bemb" onclick="startPractice('passage')">📖 אנסין + שאלות</button>
+      ${G.profile.openQuestions?`<button class="bteal" onclick="startPractice('drag')">✍️ הרכב משפט</button>`:''}
     </div>
     <div class="prgsec">
-      <div class="prgl"><span>🗺 התקדמות במסע</span><span>${G.prog} / 50 אתגרים</span></div>
-      <div class="bt" style="height:9px"><div class="bf prg" style="width:${(G.prog/50)*100}%"></div></div>
+      <div class="prgl"><span>🗺 התקדמות</span><span>${G.prog} / 20</span></div>
+      <div class="bt" style="height:9px"><div class="bf prg" style="width:${(G.prog/20)*100}%"></div></div>
       <div class="prgnodes">${nodes}</div>
     </div>`;
+
   document.getElementById("quest-panel").innerHTML=`
     <div class="pnl-t">יומן מסע</div>
-    <div style="font-size:12px;color:var(--textD);line-height:1.65;font-style:italic;margin-bottom:14px">${enemy.lore}</div>
     <div class="kv"><span class="kvk">אויב</span><span class="kvv" style="font-size:10px">${enemy.name}</span></div>
-    <div class="kv"><span class="kvk">נותרו</span><span class="kvv">${50-G.prog} אתגרים</span></div>
+    <div class="kv"><span class="kvk">נותרו</span><span class="kvv">${20-G.prog} אתגרים</span></div>
     <div class="divL"></div>
-    <div class="pnl-t">יעדים יומיים</div>
-    ${[{t:"השלם 10 תרגילי דקדוק",d:true},{t:"קרא מעבר אחד",d:true},{t:"צבור 200 נקודות",d:false}].map(o=>`
-      <div class="qo"><span class="qo-ck">${o.d?'✅':'⬜'}</span><span class="qo-tx ${o.d?'done':'pend'}">${o.t}</span></div>`).join("")}
+    <div class="pnl-t">נושאים</div>
+    ${G.profile.topics.slice(0,3).map(t=>`<div class="qo"><span class="qo-ck">📌</span><span class="qo-tx pend" style="direction:ltr">${t}</span></div>`).join("")}
     <div class="divL"></div>
-    <div class="pnl-t">פרס ממתין</div>
-    <div class="rwbx"><span class="rwic">🏆</span><div class="rwnm">הגביע הקדוש</div><div class="rwdist">${50-G.prog} אתגרים עוד...</div></div>`;
+    <div class="pnl-t">דקדוק</div>
+    ${G.profile.grammar.slice(0,3).map(t=>`<div class="qo"><span class="qo-ck">✅</span><span class="qo-tx done" style="direction:ltr;font-size:11px">${t}</span></div>`).join("")}`;
 }
 
-async function startPractice(type){
-  G.pType=type;G.exI=0;G.chosen=null;G.showFb=false;G.loading=true;
-  document.getElementById("m-type").textContent=type==="grammar"?"⚔️ קרב דקדוק":"📖 מסע קריאה";
+/* ═══════════ PRACTICE ═══════════ */
+async function startPractice(mode){
+  G.exI=0;G.chosen=null;G.showFb=false;
+  document.getElementById("m-type").textContent = mode==="drag"?"✍️ הרכב משפט":"📖 אנסין + שאלות";
   document.getElementById("m-meta").textContent="";
   document.getElementById("overlay").classList.add("open");
   document.getElementById("m-body").innerHTML=`
     <div class="ldg"><span class="ldgic">🔮</span>
-    <div class="ldgT">האורקל מכין את האתגרים...</div>
-    <div class="ldgS">${G.apiKey?"Claude מייצר תרגילים חדשים":"טוען תרגילים לדוגמה..."}</div></div>`;
+    <div class="ldgT">האורקל מכין אתגר...</div>
+    <div class="ldgS">${G.apiKey?"Claude מייצר תוכן מותאם אישית":"טוען תוכן לדוגמה..."}</div></div>`;
+
   if(G.apiKey){
     try{
-      const prompt=type==="grammar"
-        ?`Generate 5 English grammar exercises for Hebrew-speaking children aged 9-12. Return ONLY a JSON array, no markdown: [{"question":"...","options":["A","B","C","D"],"answer":"exact option","explanation":"הסבר בעברית"}]`
-        :`Generate 2 reading comprehension exercises for Hebrew kids aged 9-12 with short interesting passages. Return ONLY a JSON array: [{"passage":{"title":"...","text":"..."},"question":"...","options":["A","B","C","D"],"answer":"exact option","explanation":"הסבר בעברית"}]`;
+      const p=G.profile;
+      let prompt;
+      if(mode==="drag"){
+        prompt=`You are an English teacher for a ${p.age}-year-old Hebrew-speaking student at ${p.level} level.
+Topics the student enjoys: ${p.topics.join(", ")}.
+Grammar topics: ${p.grammar.join(", ")}.
+
+Generate 3 "build a sentence" exercises. Each has 5-6 words that form a complete sentence related to the student's interests.
+
+Return ONLY valid JSON, no markdown:
+[{"words":["word1","word2","word3","word4","word5"],"answer":"word1 word2 word3 word4 word5","explanation":"הסבר קצר בעברית"}]`;
+      } else {
+        const qTypes = p.name==="נועה" 
+          ? "multiple choice questions AND true/false questions"
+          : "multiple choice questions, true/false questions, AND 2 open sentence-building exercises";
+        prompt=`You are an English teacher for a ${p.age}-year-old Hebrew-speaking student at ${p.level} level.
+Topics the student enjoys: ${p.topics.join(", ")}.
+Grammar: ${p.grammar.join(", ")}.
+
+Create ONE engaging passage (6-8 sentences) about one of the student's topics.
+Then create questions: ${qTypes}.
+
+Return ONLY valid JSON:
+{
+  "passage": {"title":"...","text":"..."},
+  "mc": [{"q":"...","opts":["A","B","C","D"],"ans":"exact option","exp":"הסבר בעברית"}],
+  "tf": [{"q":"...","ans":true,"exp":"הסבר בעברית"}],
+  "drag": [{"words":["w1","w2","w3","w4","w5"],"answer":"w1 w2 w3 w4 w5","exp":"הסבר"}]
+}
+${p.name==="נועה"?'For Noa: very simple vocabulary, short sentences, no drag exercises (set drag to null).':''}`;
+      }
+
       const res=await fetch("https://api.anthropic.com/v1/messages",{
         method:"POST",
         headers:{"Content-Type":"application/json","x-api-key":G.apiKey,"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},
-        body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:1000,messages:[{role:"user",content:prompt}]})
+        body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:1500,messages:[{role:"user",content:prompt}]})
       });
       const d=await res.json();
-      const raw=(d.content?.[0]?.text||"[]").replace(/```json|```/g,"").trim();
+      const raw=(d.content?.[0]?.text||"").replace(/```json|```/g,"").trim();
       const parsed=JSON.parse(raw);
-      G.exs=Array.isArray(parsed)&&parsed.length>0?parsed:(type==="grammar"?SMP_GR:SMP_RD);
-    }catch(e){console.log(e);G.exs=type==="grammar"?SMP_GR:SMP_RD;}
-  }else{
-    await new Promise(r=>setTimeout(r,600));
-    G.exs=type==="grammar"?SMP_GR:SMP_RD;
+      if(mode==="drag"){
+        G.exs=parsed; G.exType="drag";
+      } else {
+        G.exs=parsed; G.exType="passage";
+      }
+    } catch(e){
+      console.log(e);
+      useFallback(mode);
+    }
+  } else {
+    await new Promise(r=>setTimeout(r,500));
+    useFallback(mode);
   }
-  G.loading=false;renderExercise();
+
+  if(G.exType==="passage") renderPassageSession();
+  else renderDragExercise();
 }
 
-function renderExercise(){
-  const ex=G.exs[G.exI];if(!ex)return;
-  document.getElementById("m-meta").textContent=`אתגר ${G.exI+1} מתוך ${G.exs.length} · ${G.prog}/50 היום`;
-  const opts=(ex.options||[]).map((opt,i)=>{
+function useFallback(mode){
+  const fb=FALLBACK[Object.keys(PROFILES).find(k=>PROFILES[k]===G.profile)];
+  if(mode==="drag"){
+    G.exs=fb.drag||[];G.exType="drag";
+  } else {
+    G.exs={passage:fb.passage,mc:fb.mc,tf:fb.tf,drag:fb.drag};G.exType="passage";
+  }
+}
+
+/* ══ PASSAGE SESSION ══ */
+let passageQueue=[];
+let passageQueueIdx=0;
+
+function renderPassageSession(){
+  const data=G.exs;
+  // Build queue: show passage first, then mc, then tf, then drag
+  passageQueue=[];
+  passageQueueIdx=0;
+  passageQueue.push({type:"passage",data:data.passage});
+  (data.mc||[]).forEach(q=>passageQueue.push({type:"mc",data:q}));
+  (data.tf||[]).forEach(q=>passageQueue.push({type:"tf",data:q}));
+  if(data.drag) (data.drag||[]).forEach(q=>passageQueue.push({type:"drag",data:q}));
+  renderPassageItem();
+}
+
+function renderPassageItem(){
+  const item=passageQueue[passageQueueIdx];
+  if(!item){sessionComplete();return;}
+  document.getElementById("m-meta").textContent=`${passageQueueIdx}/${passageQueue.length-1} · ${G.prog}/20`;
+  G.chosen=null;G.showFb=false;
+
+  if(item.type==="passage"){
+    document.getElementById("m-body").innerHTML=`
+      <div class="passage">
+        <div class="pasT">📖 ${item.data.title}</div>
+        <div class="pasTx">${item.data.text}</div>
+      </div>
+      <div style="text-align:center">
+        <button class="bgold" onclick="nextPassageItem()">התחל לענות על שאלות ←</button>
+      </div>`;
+  } else if(item.type==="mc"){
+    renderMC(item.data);
+  } else if(item.type==="tf"){
+    renderTF(item.data);
+  } else if(item.type==="drag"){
+    renderDragItem(item.data);
+  }
+}
+
+function nextPassageItem(){
+  passageQueueIdx++;
+  renderPassageItem();
+}
+
+/* MC */
+function renderMC(q){
+  const opts=(q.opts||[]).map((opt,i)=>{
     let cls="";
-    if(G.showFb&&opt===ex.answer)cls="cor";
+    if(G.showFb&&opt===q.ans)cls="cor";
     else if(G.showFb&&opt===G.chosen)cls="wrg";
-    return `<button class="opt ${cls}" onclick="doAnswer(${i})" ${G.showFb?'disabled':''}>${String.fromCharCode(65+i)}. ${opt}</button>`;
+    return `<button class="opt ${cls}" onclick="answerMC(${i})" ${G.showFb?'disabled':''}>${String.fromCharCode(65+i)}. ${opt}</button>`;
   }).join("");
-  const fb=G.showFb?`
-    <div class="fbk ${G.isOk?'cor':'wrg'}">${G.isOk?`✅ מצוין! ${ex.explanation}`:`❌ התשובה הנכונה: "${ex.answer}". ${ex.explanation}`}</div>
-    <button class="bgold" style="width:100%" onclick="doNext()">${G.exI+1>=G.exs.length?"🏆 סיים את הסשן":"האתגר הבא ←"}</button>`:"";
+  const fb=G.showFb?`<div class="fbk ${G.isOk?'cor':'wrg'}">${G.isOk?`✅ ${q.exp}`:`❌ התשובה: "${q.ans}". ${q.exp}`}</div>
+    <button class="bgold" style="width:100%;margin-top:4px" onclick="nextPassageItem()">הבא ←</button>`:"";
   document.getElementById("m-body").innerHTML=`
-    ${ex.passage?`<div class="passage"><div class="pasT">📖 ${ex.passage.title}</div><div class="pasTx">${ex.passage.text}</div></div>`:""}
-    <div class="exQ">${ex.question.replace(/___/g,"<strong>___</strong>")}</div>
+    <div class="qtype-label">שאלת הבנה</div>
+    <div class="exQ" style="direction:ltr;text-align:left">${q.q}</div>
     <div class="opts">${opts}</div>${fb}`;
 }
 
-function doAnswer(i){
+function answerMC(i){
   if(G.showFb)return;
-  const ex=G.exs[G.exI];const opt=ex.options[i];const ok=opt===ex.answer;
+  const item=passageQueue[passageQueueIdx];
+  const q=item.data;
+  const opt=q.opts[i];const ok=opt===q.ans;
   G.chosen=opt;G.showFb=true;G.isOk=ok;
+  if(ok){G.pts+=25;G.xp=Math.min(100,G.xp+6);G.prog=Math.min(20,G.prog+1);G.eHp=Math.max(0,G.eHp-8);G.blog=`✅ <span class="g">תשובה נכונה!</span> +25 נקודות!`;}
+  else{G.hp=Math.max(0,G.hp-5);G.blog=`🐉 <span class="f">האויב תוקף!</span> -5 HP`;}
+  renderMC(q);
+}
+
+/* TF */
+function renderTF(q){
+  let tCls="",fCls="";
+  if(G.showFb){
+    if(q.ans===true){tCls="cor";if(G.chosen===false)fCls="wrg";}
+    else{fCls="cor";if(G.chosen===true)tCls="wrg";}
+  }
+  const fb=G.showFb?`<div class="fbk ${G.isOk?'cor':'wrg'}">${G.isOk?`✅ ${q.exp}`:`❌ ${q.exp}`}</div>
+    <button class="bgold" style="width:100%;margin-top:4px" onclick="nextPassageItem()">הבא ←</button>`:"";
+  document.getElementById("m-body").innerHTML=`
+    <div class="qtype-label">נכון / לא נכון</div>
+    <div class="exQ" style="direction:ltr;text-align:left">${q.q}</div>
+    <div class="tf-opts">
+      <button class="tf-btn true-btn ${tCls}" onclick="answerTF(true)" ${G.showFb?'disabled':''}>✓ True</button>
+      <button class="tf-btn false-btn ${fCls}" onclick="answerTF(false)" ${G.showFb?'disabled':''}>✗ False</button>
+    </div>${fb}`;
+}
+
+function answerTF(val){
+  if(G.showFb)return;
+  const q=passageQueue[passageQueueIdx].data;
+  const ok=val===q.ans;
+  G.chosen=val;G.showFb=true;G.isOk=ok;
+  if(ok){G.pts+=20;G.xp=Math.min(100,G.xp+5);G.prog=Math.min(20,G.prog+1);G.eHp=Math.max(0,G.eHp-6);G.blog=`✅ <span class="g">נכון!</span> +20 נקודות!`;}
+  else{G.hp=Math.max(0,G.hp-5);G.blog=`🐉 <span class="f">לא נכון!</span> -5 HP`;}
+  renderTF(q);
+}
+
+/* DRAG — item within passage */
+function renderDragItem(q){
+  const shuffled=[...q.words].sort(()=>Math.random()-.5);
+  G.dragWords=shuffled;G.dragPlaced=[];
+  renderDragUI(q,shuffled);
+}
+
+/* DRAG — standalone session */
+function renderDragExercise(){
+  if(!G.exs||G.exs.length===0){closeModal();return;}
+  G.exI=0;
+  const q=G.exs[G.exI];
+  const shuffled=[...q.words].sort(()=>Math.random()-.5);
+  G.dragWords=shuffled;G.dragPlaced=[];
+  document.getElementById("m-meta").textContent=`משפט ${G.exI+1} מתוך ${G.exs.length}`;
+  renderDragUI(q,shuffled);
+}
+
+function renderDragUI(q,shuffled){
+  document.getElementById("m-body").innerHTML=`
+    <div class="qtype-label">הרכב/י משפט — גרור/י מילים לתיבה</div>
+    <div class="drag-sentence-label">המשפט שלך:</div>
+    <div class="drag-sentence" id="drag-target"
+      ondragover="event.preventDefault();this.classList.add('drag-over')"
+      ondragleave="this.classList.remove('drag-over')"
+      ondrop="dropWord(event)">
+      <span id="drag-placeholder" style="color:var(--textD);font-size:13px;font-style:italic">גרור/י מילים לכאן...</span>
+    </div>
+    <div class="drag-sentence-label">מחסן מילים:</div>
+    <div class="word-bank" id="word-bank"
+      ondragover="event.preventDefault()"
+      ondrop="returnWord(event)">
+      ${shuffled.map((w,i)=>`<div class="word-chip" draggable="true" id="wc-${i}"
+        ondragstart="dragStart(event,${i})"
+        ondragend="dragEnd(event)">${w}</div>`).join("")}
+    </div>
+    <div class="drag-check">
+      <button class="bgold" onclick="checkDrag('${q.answer}','${(q.exp||q.explanation||'').replace(/'/g,"\\'")}')">בדוק ✓</button>
+      <button onclick="resetDrag()" style="margin-right:10px;padding:10px 18px;background:transparent;border:1px solid rgba(219,168,74,.3);border-radius:6px;color:var(--textD);cursor:pointer;font-family:var(--S);font-size:12px">נקה</button>
+    </div>
+    <div id="drag-fb"></div>`;
+}
+
+let dragIdx=null;
+function dragStart(e,i){dragIdx=i;e.target.classList.add('dragging');e.dataTransfer.setData('text/plain',i);}
+function dragEnd(e){e.target.classList.remove('dragging');}
+
+function dropWord(e){
+  e.preventDefault();
+  const target=document.getElementById("drag-target");
+  target.classList.remove('drag-over');
+  const i=parseInt(e.dataTransfer.getData('text/plain'));
+  const chip=document.getElementById("wc-"+i);
+  if(!chip)return;
+  const placeholder=document.getElementById("drag-placeholder");
+  if(placeholder)placeholder.remove();
+  chip.classList.add('placed');
+  chip.setAttribute('ondragstart',`dragStart(event,${i})`);
+  target.appendChild(chip);
+  G.dragPlaced.push(i);
+}
+
+function returnWord(e){
+  e.preventDefault();
+  const i=parseInt(e.dataTransfer.getData('text/plain'));
+  const chip=document.getElementById("wc-"+i);
+  if(!chip)return;
+  chip.classList.remove('placed');
+  document.getElementById("word-bank").appendChild(chip);
+  G.dragPlaced=G.dragPlaced.filter(x=>x!==i);
+  if(document.getElementById("drag-target").children.length===0){
+    document.getElementById("drag-target").innerHTML='<span id="drag-placeholder" style="color:var(--textD);font-size:13px;font-style:italic">גרור/י מילים לכאן...</span>';
+  }
+}
+
+function resetDrag(){
+  const bank=document.getElementById("word-bank");
+  const target=document.getElementById("drag-target");
+  [...target.querySelectorAll('.word-chip')].forEach(c=>{c.classList.remove('placed');bank.appendChild(c);});
+  target.innerHTML='<span id="drag-placeholder" style="color:var(--textD);font-size:13px;font-style:italic">גרור/י מילים לכאן...</span>';
+  G.dragPlaced=[];
+}
+
+function checkDrag(answer,exp){
+  const target=document.getElementById("drag-target");
+  const placed=[...target.querySelectorAll('.word-chip')].map(c=>c.textContent.trim()).join(" ");
+  const ok=placed.toLowerCase()===answer.toLowerCase();
+  const fb=document.getElementById("drag-fb");
+  fb.innerHTML=`<div class="fbk ${ok?'cor':'wrg'}" style="margin-top:14px">
+    ${ok?`✅ מצוין! "${answer}" — ${exp}`:`❌ הנסה שוב. הסדר הנכון: "${answer}". ${exp}`}
+  </div>`;
   if(ok){
-    G.pts+=30;G.xp=Math.min(100,G.xp+8);G.prog=Math.min(50,G.prog+1);G.eHp=Math.max(0,G.eHp-5);
-    const logs=[`⚔️ <span class="g">${G.char.name}</span> ענה/ה נכון! הדרקון מקבל <span class="f">-5 HP</span>!`,`✨ <span class="gr">מצוין!</span> +30 נקודות!`,`🌟 הידע של <span class="g">${G.char.name}</span> פוגע כחרב חדה!`];
-    G.blog=logs[Math.floor(Math.random()*3)];
-  }else{
-    G.hp=Math.max(0,G.hp-7);
-    G.blog=`🐉 <span class="f">הדרקון</span> נושף אש! <span class="g">${G.char.name}</span> מפסיד 7 HP!`;
+    G.pts+=35;G.xp=Math.min(100,G.xp+10);G.prog=Math.min(20,G.prog+1);G.eHp=Math.max(0,G.eHp-10);
+    G.blog=`✅ <span class="g">מצוין!</span> +35 נקודות!`;
+    fb.innerHTML+=`<button class="bgold" style="width:100%;margin-top:10px" onclick="nextDragOrClose()">הבא ←</button>`;
+  } else {
+    G.hp=Math.max(0,G.hp-5);
+    G.blog=`🐉 <span class="f">לא בדיוק...</span> נסה/י שוב!`;
+    fb.innerHTML+=`<button onclick="resetDrag()" style="margin-top:10px;width:100%;padding:12px;background:rgba(219,168,74,.08);border:1px solid rgba(219,168,74,.3);border-radius:6px;color:var(--gold);cursor:pointer;font-family:var(--T);font-size:13px">נסה שוב 🔄</button>`;
   }
-  renderExercise();
 }
-function doNext(){
-  G.chosen=null;G.showFb=false;
-  if(G.exI+1>=G.exs.length){closeModal();G.pts+=120;showToast("🏆 סיימת! +120 נקודות בונוס!","green");renderGame();}
-  else{G.exI++;renderExercise();}
+
+function nextDragOrClose(){
+  if(G.exType==="passage"){
+    nextPassageItem();
+  } else {
+    G.exI++;
+    if(G.exI>=G.exs.length){sessionComplete();}
+    else{
+      const q=G.exs[G.exI];
+      const shuffled=[...q.words].sort(()=>Math.random()-.5);
+      G.dragWords=shuffled;G.dragPlaced=[];
+      document.getElementById("m-meta").textContent=`משפט ${G.exI+1} מתוך ${G.exs.length}`;
+      renderDragUI(q,shuffled);
+    }
+  }
 }
+
+function sessionComplete(){
+  G.pts+=100;
+  showToast(`🏆 ${G.profile.name} סיים/ה! +100 בונוס!`,"green");
+  closeModal();
+  renderGame();
+}
+
 function closeModal(){document.getElementById("overlay").classList.remove("open");renderGame();}
-
-function setShopCat(cat){
-  G.shopCat=cat;
-  document.querySelectorAll(".scat").forEach(b=>b.classList.remove("on"));
-  document.getElementById("cat-"+cat).classList.add("on");
-  renderShop();
-}
-function renderShop(){
-  document.getElementById("shop-pts").textContent=`⭐ ${G.pts.toLocaleString()}`;
-  document.getElementById("shop-bal-num").textContent=G.pts.toLocaleString();
-  document.getElementById("shop-grid").innerHTML=SHOP_DATA[G.shopCat].map(item=>{
-    const isOwned=G.owned.includes(item.id),canAff=G.pts>=item.price;
-    return `<div class="si"><span class="si-ic">${item.emoji}</span>
-      <div class="si-nm">${item.name}</div><div class="si-ds">${item.desc}</div>
-      <div class="si-pr">⭐ ${item.price}</div>
-      <button class="sib ${isOwned?'own':canAff?'can':'no'}" onclick="doBuy('${item.id}')" ${isOwned||!canAff?'disabled':''}>
-        ${isOwned?"✓ ברשותך":canAff?"רכוש":"נקודות לא מספיקות"}</button></div>`;
-  }).join("");
-}
-function doBuy(id){
-  const item=[...SHOP_DATA.skins,...SHOP_DATA.powers].find(x=>x.id===id);
-  if(!item||G.owned.includes(id))return;
-  if(G.pts<item.price){showToast("❌ אין מספיק נקודות!","red");return;}
-  G.pts-=item.price;G.owned.push(id);showToast(`✨ "${item.name}" נרכש!`,"green");renderShop();
-}
-
-function setAdminTab(tab){
-  G.adminTab=tab;
-  document.querySelectorAll(".at").forEach(b=>b.classList.remove("on"));
-  document.getElementById("at-"+tab).classList.add("on");
-  renderAdmin();
-}
-function renderAdmin(){
-  const c=document.getElementById("admin-content");
-  if(G.adminTab==="users"){
-    c.innerHTML=`<div class="pnl"><div class="pnl-t tl">סטטיסטיקות גיבורים</div>
-      <table class="dtable"><thead><tr><th>שם</th><th>אימייל</th><th>דק׳</th><th>משימות</th><th>נכון</th><th>דיוק</th><th>נקודות</th><th>פעולות</th></tr></thead>
-      <tbody>${USERS.map(u=>`<tr>
-        <td style="font-family:var(--S);font-weight:700;color:var(--gold)">${u.name}</td>
-        <td style="color:var(--textD);font-size:11px">${u.email}</td>
-        <td>${u.min}m</td><td>${u.tasks}</td><td style="color:var(--sageL)">${u.ok}</td>
-        <td><span class="acc ${u.acc>=80?'hi':u.acc>=65?'md':'lo'}">${u.acc}%</span></td>
-        <td style="color:var(--gold);font-family:var(--S)">⭐ ${u.pts.toLocaleString()}</td>
-        <td><button class="tbtn rs" onclick="showToast('🔄 נקודות אופסו עבור ${u.name}','red')">🔄 אפס</button>
-            <button class="tbtn vw" onclick="showToast('👁️ צופה כ-${u.name}')">👁 תחזה</button></td>
-      </tr>`).join("")}</tbody></table></div>`;
-  }else if(G.adminTab==="tasks"){
-    c.innerHTML=`<div class="pnl"><div class="pnl-t tl">משימות פעילות</div>
-      ${TASKS_DATA.map(t=>`<div class="trow">
-        <span class="tyb ${t.type==='grammar'?'gr':'rd'}">${t.type==='grammar'?'דקדוק':'קריאה'}</span>
-        <span class="tnm">${t.name}</span><span class="tmeta">${t.cnt} תרגילים</span><span class="tmeta">${t.date}</span>
-      </div>`).join("")}</div>`;
-  }else{
-    c.innerHTML=`<div class="pnl"><div class="pnl-t tl">יצירת משימה חדשה</div>
-      <div class="tskfm">
-        <div class="fg"><label class="fl">סוג משימה</label>
-          <select class="fs"><option>דקדוק (Grammar)</option><option>הבנת הנקרא (Reading)</option></select></div>
-        <div class="fg"><label class="fl">שם המשימה</label>
-          <input class="fi" id="task-name" placeholder="למשל: Present Perfect Tense"></div>
-        <div class="fg"><label class="fl">העלה חומר לימוד</label>
-          <div class="fdrop" onclick="showToast('📎 כאן תוכלי לגרור קבצים')">📎 לחץ/י להעלאת חומר לימוד</div></div>
-        <div class="fg"><label class="fl">הנחיות למנוע ה-AI</label>
-          <textarea class="fta" placeholder="תאר/י מה הילד לומד כעת..."></textarea></div>
-        <button class="bteal" onclick="createTask()">✨ ייצר 50 תרגילים עם AI</button>
-      </div>
-      <div class="ainote">🤖 <strong>מנוע ה-AI מוכן:</strong> Claude יייצר 50 תרגילים מותאמים — 10 בכל רמת קושי.</div></div>`;
-  }
-}
-function createTask(){
-  const nm=document.getElementById("task-name")?.value;
-  if(!nm){showToast("נא להזין שם משימה","red");return;}
-  showToast(`✅ "${nm}" נוצרה עם 50 תרגילים!`,"green");
-}
 </script>
 </body>
 </html>
