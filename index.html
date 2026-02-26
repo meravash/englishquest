@@ -15,10 +15,10 @@
   --teal:#17a890;--tealL:#22d9bc;
   --sage:#328060;--sageL:#50ab7d;
   --violet:#5c228a;
-  --text:#cdbfa5;--textD:#6a5c44;
+  --text:#e8dcc8;--textD:#9a8a70;
   --T:'Cinzel Decorative',cursive;--S:'Cinzel',serif;--B:'Spectral',serif;
 }
-html,body{background:var(--void);font-family:var(--B);color:var(--text);min-height:100vh;overflow-x:hidden}
+html,body{background:var(--void);font-family:var(--B);color:#e8dcc8;min-height:100vh;overflow-x:hidden;font-size:17px}
 ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--deep)}::-webkit-scrollbar-thumb{background:var(--goldD);border-radius:3px}
 #cosmos{position:fixed;inset:0;z-index:0;pointer-events:none;
   background:radial-gradient(ellipse 90% 70% at 10% -10%,rgba(92,34,138,.2) 0%,transparent 50%),
@@ -186,18 +186,18 @@ nav{position:sticky;top:0;z-index:200;height:58px;padding:0 20px;
 
 /* PASSAGE */
 .passage{background:rgba(0,0,0,.32);border:1px solid rgba(219,168,74,.1);border-radius:10px;padding:20px 22px;margin-bottom:22px}
-.pasT{font-family:var(--T);color:var(--gold);font-size:17px;margin-bottom:10px}
-.pasTx{font-size:15px;line-height:1.85;direction:ltr;text-align:left}
+.pasT{font-family:var(--T);color:var(--gold2);font-size:20px;margin-bottom:12px}
+.pasTx{font-size:18px;line-height:2.1;direction:ltr;text-align:left;color:#f0e8d8}
 
 /* QUESTION */
-.exQ{font-size:18px;color:var(--text);line-height:1.5;margin-bottom:22px;font-style:italic}
+.exQ{font-size:20px;color:#f0e8d8;line-height:1.6;margin-bottom:22px;font-style:italic}
 .exQ strong{color:var(--gold2);font-style:normal}
-.qtype-label{font-family:var(--S);font-size:10px;letter-spacing:2px;color:var(--teal);text-transform:uppercase;margin-bottom:10px}
+.qtype-label{font-family:var(--S);font-size:13px;letter-spacing:2px;color:var(--tealL);text-transform:uppercase;margin-bottom:12px}
 
 /* MC OPTIONS */
 .opts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}
-.opt{padding:14px 17px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.11);
-  border-radius:10px;color:var(--text);font-size:14px;cursor:pointer;
+.opt{padding:16px 18px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.18);
+  border-radius:10px;color:#e8dcc8;font-size:17px;cursor:pointer;
   transition:all .28s;font-family:var(--B);text-align:right;width:100%;direction:ltr;text-align:left}
 .opt:hover:not([disabled]){background:rgba(219,168,74,.07);border-color:rgba(219,168,74,.42);color:var(--gold)}
 .opt.cor{background:rgba(50,128,96,.17)!important;border-color:var(--sageL)!important;color:var(--sageL)!important}
@@ -205,7 +205,7 @@ nav{position:sticky;top:0;z-index:200;height:58px;padding:0 20px;
 
 /* TRUE/FALSE */
 .tf-opts{display:flex;gap:12px;margin-bottom:18px;justify-content:center}
-.tf-btn{padding:16px 40px;border-radius:10px;font-family:var(--T);font-size:16px;cursor:pointer;transition:all .28s;border:2px solid}
+.tf-btn{padding:18px 44px;border-radius:10px;font-family:var(--T);font-size:19px;cursor:pointer;transition:all .28s;border:2px solid}
 .tf-btn.true-btn{border-color:rgba(50,128,96,.4);background:rgba(50,128,96,.08);color:var(--sageL)}
 .tf-btn.false-btn{border-color:rgba(122,21,21,.4);background:rgba(122,21,21,.08);color:var(--bloodL)}
 .tf-btn:hover:not([disabled]){transform:translateY(-2px);filter:brightness(1.2)}
@@ -221,8 +221,8 @@ nav{position:sticky;top:0;z-index:200;height:58px;padding:0 20px;
 .drag-sentence.drag-over{border-color:var(--gold);background:rgba(219,168,74,.05)}
 .drag-sentence-label{font-family:var(--S);font-size:10px;color:var(--textD);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px}
 .word-bank{display:flex;flex-wrap:wrap;gap:8px;padding:14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:10px;direction:ltr;min-height:52px}
-.word-chip{padding:8px 14px;background:rgba(219,168,74,.1);border:1px solid rgba(219,168,74,.3);
-  border-radius:6px;color:var(--gold);font-size:14px;cursor:grab;font-family:var(--B);
+.word-chip{padding:11px 18px;background:rgba(219,168,74,.12);border:1px solid rgba(219,168,74,.4);
+  border-radius:8px;color:#f2cf80;font-size:18px;cursor:grab;font-family:var(--B);font-weight:600;
   transition:all .2s;user-select:none;direction:ltr}
 .word-chip:hover{background:rgba(219,168,74,.2);transform:translateY(-2px)}
 .word-chip.dragging{opacity:.4;transform:scale(0.95)}
@@ -231,7 +231,7 @@ nav{position:sticky;top:0;z-index:200;height:58px;padding:0 20px;
 .drag-check{margin-top:12px}
 
 /* FEEDBACK */
-.fbk{padding:15px 18px;border-radius:10px;margin-bottom:18px;font-size:14px;line-height:1.6}
+.fbk{padding:18px 20px;border-radius:10px;margin-bottom:18px;font-size:17px;line-height:1.7}
 .fbk.cor{background:rgba(50,128,96,.1);border:1px solid var(--sageL);color:var(--sageL)}
 .fbk.wrg{background:rgba(122,21,21,.1);border:1px solid var(--bloodL);color:var(--bloodL)}
 
@@ -268,9 +268,9 @@ nav{position:sticky;top:0;z-index:200;height:58px;padding:0 20px;
   .opt{font-size:17px!important;padding:16px!important}
   .tf-btn{font-size:18px!important;padding:18px 30px!important}
   .pasT{font-size:18px!important}
-  .pasTx{font-size:17px!important;line-height:2!important}
-  .word-chip{font-size:17px!important;padding:10px 18px!important}
-  .fbk{font-size:16px!important}
+  .pasTx{font-size:19px!important;line-height:2.2!important}
+  .word-chip{font-size:19px!important;padding:12px 20px!important}
+  .fbk{font-size:18px!important}
   .pc-name{font-size:26px!important}
   .pc-level{font-size:13px!important}
   .arT{font-size:17px!important}
@@ -506,8 +506,8 @@ const FALLBACK = {
       {q:"Jordan is swimming in a pool.",ans:false,exp:"לא נכון. Jordan משחק כדורסל, לא שוחה."},
     ],
     drag: [
-      {words:["Jordan","is","playing","basketball","now"],answer:"Jordan is playing basketball now",exp:"הווה מתמשך: Jordan + is + playing + basketball + now"},
-      {words:["The","team","is","winning","today"],answer:"The team is winning today",exp:"The team is winning today — הצוות מנצח היום."},
+      {question:"What is Jordan doing now?",answer:["Jordan","is","playing","basketball","now"],distractors:["play","plays","are"],exp:"הווה מתמשך: Jordan + is + playing. לא 'play' (הווה פשוט) ולא 'are' (רבים)."},
+      {question:"What does the team do every Sunday?",answer:["The","team","plays","basketball"],distractors:["play","is playing","are playing"],exp:"הווה פשוט עם team (גוף שלישי יחיד): plays. לא 'play' ולא 'is playing'."},
     ]
   },
   omer: {
@@ -524,8 +524,8 @@ const FALLBACK = {
       {q:"The wizard is walking to the cave.",ans:true,exp:"נכון! הטקסט אומר 'The wizard is walking slowly to the cave.'"},
     ],
     drag: [
-      {words:["The","wizard","is","walking","slowly"],answer:"The wizard is walking slowly",exp:"הווה מתמשך: The wizard + is + walking + slowly"},
-      {words:["Where","is","the","dragon","sleeping"],answer:"Where is the dragon sleeping",exp:"שאלת WH: Where + is + the dragon + sleeping?"},
+      {question:"What is the wizard doing right now?",answer:["The","wizard","is","walking","slowly"],distractors:["walk","walks","are"],exp:"הווה מתמשך: is + walking. לא 'walks' (הווה פשוט) ולא 'are' (רבים)."},
+      {question:"Where does the dragon sleep?",answer:["The","dragon","sleeps","in","a","cave"],distractors:["sleep","is sleeping","sleeping"],exp:"הווה פשוט: sleeps (עם s). לא 'sleep' ולא 'is sleeping'."},
     ]
   },
   noa: {
@@ -748,8 +748,21 @@ Return ONLY valid JSON:
   "passage": {"title":"...","text":"..."},
   "mc": [{"q":"...","opts":["A","B","C","D"],"ans":"exact option","exp":"הסבר בעברית"}],
   "tf": [{"q":"...","ans":true,"exp":"הסבר בעברית"}],
-  "drag": [{"words":["w1","w2","w3","w4","w5"],"answer":"w1 w2 w3 w4 w5","exp":"הסבר"}]
+  "drag": [
+    {
+      "question": "question in English asking student to build a sentence (related to the passage)",
+      "answer": ["correct","word","order","here"],
+      "distractors": ["wrong1","wrong2","wrong3"],
+      "exp": "הסבר קצר בעברית"
+    }
+  ]
 }
+
+CRITICAL for drag exercises:
+- "answer" = array of words IN CORRECT ORDER that form the answer sentence
+- "distractors" = 3 WRONG words that look plausible but are incorrect (e.g. if answer uses "is playing" add "plays","are","played" as distractors; if answer uses "goes" add "go","going","went")
+- Distractors must test grammar knowledge: wrong verb form, wrong subject-verb agreement, wrong tense
+- Example: answer=["She","is","playing","basketball"] distractors=["play","plays","are"]
 ${p.name==="נועה"?'For Noa: very simple vocabulary, short sentences, no drag exercises (set drag to null).':''}`;
       }
 
@@ -804,6 +817,21 @@ function renderPassageSession(){
   renderPassageItem();
 }
 
+function getPassageHTML(){
+  // Find the passage item in the queue
+  const passageItem = passageQueue.find(i=>i.type==="passage");
+  if(!passageItem) return "";
+  return `<details style="margin-bottom:18px">
+    <summary style="font-family:var(--S);font-size:12px;color:var(--tealL);letter-spacing:1px;cursor:pointer;padding:8px 12px;background:rgba(23,168,144,.07);border:1px solid rgba(23,168,144,.2);border-radius:8px;list-style:none;text-align:center">
+      📖 חזור/י לטקסט ▾
+    </summary>
+    <div class="passage" style="margin-top:10px">
+      <div class="pasT">${passageItem.data.title}</div>
+      <div class="pasTx">${passageItem.data.text}</div>
+    </div>
+  </details>`;
+}
+
 function renderPassageItem(){
   const item=passageQueue[passageQueueIdx];
   if(!item){sessionComplete();return;}
@@ -844,7 +872,8 @@ function renderMC(q){
   const fbCls=G.isOk?"cor":"wrg";
   const fbTxt=G.isOk?"✅ "+q.exp:"❌ התשובה: \""+q.ans+"\". "+q.exp;
   const fb=G.showFb?'<div class="fbk '+fbCls+'">'+ fbTxt +'</div><button class="bgold" style="width:100%;margin-top:4px" onclick="nextPassageItem()">הבא ←</button>':''
-  document.getElementById("m-body").innerHTML=`
+  document.getElementById("m-body").innerHTML=
+    getPassageHTML()+`
     <div class="qtype-label">שאלת הבנה</div>
     <div class="exQ" style="direction:ltr;text-align:left">${q.q}</div>
     <div class="opts">${opts}</div>${fb}`;
@@ -871,7 +900,8 @@ function renderTF(q){
   const fbCls2=G.isOk?"cor":"wrg";
   const fbTxt2=G.isOk?"✅ "+q.exp:"❌ "+q.exp;
   const fb=G.showFb?'<div class="fbk '+fbCls2+'">'+ fbTxt2 +'</div><button class="bgold" style="width:100%;margin-top:4px" onclick="nextPassageItem()">הבא ←</button>':''
-  document.getElementById("m-body").innerHTML=`
+  document.getElementById("m-body").innerHTML=
+    getPassageHTML()+`
     <div class="qtype-label">נכון / לא נכון</div>
     <div class="exQ" style="direction:ltr;text-align:left">${q.q}</div>
     <div class="tf-opts">
@@ -892,9 +922,13 @@ function answerTF(val){
 
 /* DRAG — item within passage */
 function renderDragItem(q){
-  const shuffled=[...q.words].sort(()=>Math.random()-.5);
+  // Build word bank: answer words + distractor words, shuffled
+  const allWords = [...(q.answer || q.words), ...(q.distractors || [])];
+  const shuffled = allWords.sort(()=>Math.random()-.5);
   G.dragWords=shuffled;G.dragPlaced=[];
-  renderDragUI(q,shuffled);
+  // Use answer array joined as the correct answer string
+  const answerStr = Array.isArray(q.answer) ? q.answer.join(" ") : q.answer;
+  renderDragUI({...q, words: shuffled, answer: answerStr}, shuffled);
 }
 
 /* DRAG — standalone session */
@@ -902,15 +936,20 @@ function renderDragExercise(){
   if(!G.exs||G.exs.length===0){closeModal();return;}
   G.exI=0;
   const q=G.exs[G.exI];
-  const shuffled=[...q.words].sort(()=>Math.random()-.5);
+  const allWords=[...(q.answer||q.words||[]),...(q.distractors||[])];
+  const shuffled=allWords.sort(()=>Math.random()-.5);
   G.dragWords=shuffled;G.dragPlaced=[];
+  const answerStr=Array.isArray(q.answer)?q.answer.join(" "):q.answer;
   document.getElementById("m-meta").textContent=`משפט ${G.exI+1} מתוך ${G.exs.length}`;
-  renderDragUI(q,shuffled);
+  renderDragUI({...q,words:shuffled,answer:answerStr},shuffled);
 }
 
 function renderDragUI(q,shuffled){
-  document.getElementById("m-body").innerHTML=`
-    <div class="qtype-label">הרכב/י משפט — גרור/י מילים לתיבה</div>
+  const dragQuestion = q.question || "הרכב/י את המשפט הנכון:";
+  document.getElementById("m-body").innerHTML=
+    (passageQueue && passageQueue.length ? getPassageHTML() : "")+`
+    <div class="qtype-label">הרכב/י תשובה — גרור/י מילים לתיבה</div>
+    <div class="exQ" style="direction:ltr;text-align:left;margin-bottom:18px">${dragQuestion}</div>
     <div class="drag-sentence-label">המשפט שלך:</div>
     <div class="drag-sentence" id="drag-target"
       ondragover="event.preventDefault();this.classList.add('drag-over')"
@@ -999,10 +1038,12 @@ function nextDragOrClose(){
     if(G.exI>=G.exs.length){sessionComplete();}
     else{
       const q=G.exs[G.exI];
-      const shuffled=[...q.words].sort(()=>Math.random()-.5);
+      const allWords=[...(q.answer||q.words||[]),...(q.distractors||[])];
+      const shuffled=allWords.sort(()=>Math.random()-.5);
       G.dragWords=shuffled;G.dragPlaced=[];
+      const answerStr=Array.isArray(q.answer)?q.answer.join(" "):q.answer;
       document.getElementById("m-meta").textContent=`משפט ${G.exI+1} מתוך ${G.exs.length}`;
-      renderDragUI(q,shuffled);
+      renderDragUI({...q,words:shuffled,answer:answerStr},shuffled);
     }
   }
 }
