@@ -286,6 +286,27 @@ nav{position:sticky;top:0;z-index:200;height:58px;padding:0 20px;
   .profile-card{padding:24px 18px}
   .abtns button{font-size:14px!important;padding:14px 18px!important}
 }
+
+/* PASSWORD MODAL */
+.pw-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:800;
+  display:none;align-items:center;justify-content:center;backdrop-filter:blur(8px)}
+.pw-overlay.open{display:flex}
+.pw-box{background:linear-gradient(145deg,rgba(19,12,38,.99),rgba(7,4,15,.99));
+  border:1px solid rgba(219,168,74,.3);border-radius:16px;padding:36px 32px;
+  width:100%;max-width:340px;text-align:center}
+.pw-title{font-family:var(--T);color:var(--gold);font-size:22px;margin-bottom:8px}
+.pw-sub{font-family:var(--S);font-size:11px;color:var(--textD);letter-spacing:2px;margin-bottom:24px}
+.pw-input{width:100%;padding:13px 16px;background:rgba(0,0,0,.4);
+  border:1px solid rgba(219,168,74,.3);border-radius:8px;color:var(--text);
+  font-size:18px;font-family:var(--B);text-align:center;letter-spacing:4px;margin-bottom:16px}
+.pw-input:focus{outline:none;border-color:var(--gold)}
+.pw-err{color:var(--bloodL);font-family:var(--S);font-size:12px;min-height:18px;margin-bottom:12px}
+.pw-btns{display:flex;gap:10px}
+.pw-ok{flex:1;padding:12px;background:linear-gradient(135deg,var(--goldD),var(--gold));
+  border:none;border-radius:6px;color:var(--void);font-family:var(--T);font-size:14px;cursor:pointer}
+.pw-cancel{padding:12px 18px;background:transparent;border:1px solid rgba(255,255,255,.12);
+  border-radius:6px;color:var(--textD);font-family:var(--S);font-size:12px;cursor:pointer}
+.pw-cancel:hover{border-color:rgba(219,168,74,.3);color:var(--gold)}
 </style>
 </head>
 <body>
@@ -391,6 +412,21 @@ nav{position:sticky;top:0;z-index:200;height:58px;padding:0 20px;
   </div>
 </div>
 
+
+<!-- PASSWORD MODAL -->
+<div class="pw-overlay" id="pw-overlay">
+  <div class="pw-box">
+    <div class="pw-title" id="pw-title">🔑 סיסמה</div>
+    <div class="pw-sub" id="pw-sub">הכנס/י סיסמה כדי להמשיך</div>
+    <input class="pw-input" id="pw-input" type="password" placeholder="••••••" maxlength="20"
+      onkeydown="if(event.key==='Enter')pwSubmit()">
+    <div class="pw-err" id="pw-err"></div>
+    <div class="pw-btns">
+      <button class="pw-cancel" onclick="pwClose()">ביטול</button>
+      <button class="pw-ok" onclick="pwSubmit()">כנס/י →</button>
+    </div>
+  </div>
+</div>
 </div><!-- end app -->
 
 <script>
@@ -555,14 +591,33 @@ function loadApiKey(){
 // Password per profile
 const PASSWORDS = {yoav:"yoav123", omer:"omer123", noa:"noa123", admin:"admin999"};
 
+let pendingPid = null;
 function selectProfile(pid){
-  if(pid==="admin"){
-    const pw=prompt("סיסמת מנהל:");
-    if(pw!==PASSWORDS.admin){showToast("סיסמה שגויה","red");return;}
-    showAdminPanel();return;
+  pendingPid = pid;
+  const name = pid==="admin" ? "מנהל" : PROFILES[pid].name;
+  const emoji = pid==="admin" ? "⚙️" : PROFILES[pid].emoji;
+  document.getElementById("pw-title").textContent = emoji + " " + name;
+  document.getElementById("pw-sub").textContent = "הכנס/י סיסמה כדי להיכנס";
+  document.getElementById("pw-input").value = "";
+  document.getElementById("pw-err").textContent = "";
+  document.getElementById("pw-overlay").classList.add("open");
+  setTimeout(()=>document.getElementById("pw-input").focus(), 100);
+}
+function pwClose(){
+  document.getElementById("pw-overlay").classList.remove("open");
+  pendingPid = null;
+}
+function pwSubmit(){
+  const pw = document.getElementById("pw-input").value.trim();
+  const pid = pendingPid;
+  if(pw !== PASSWORDS[pid]){
+    document.getElementById("pw-err").textContent = "❌ סיסמה שגויה, נסה/י שוב";
+    document.getElementById("pw-input").value = "";
+    document.getElementById("pw-input").focus();
+    return;
   }
-  const pw=prompt(`סיסמת ${PROFILES[pid].name}:`);
-  if(pw!==PASSWORDS[pid]){showToast("סיסמה שגויה ❌","red");return;}
+  pwClose();
+  if(pid==="admin"){showAdminPanel();return;}
   G.profile = PROFILES[pid];
   G.pts=0;G.hp=100;G.eHp=100;G.xp=0;G.prog=0;G.eIdx=0;
   G.blog=`ברוך הבא ${G.profile.name}! המסע מתחיל...`;
@@ -786,8 +841,9 @@ function renderMC(q){
     else if(G.showFb&&opt===G.chosen)cls="wrg";
     return `<button class="opt ${cls}" onclick="answerMC(${i})" ${G.showFb?'disabled':''}>${String.fromCharCode(65+i)}. ${opt}</button>`;
   }).join("");
-  const fb=G.showFb?`<div class="fbk ${G.isOk?'cor':'wrg'}">${G.isOk?`✅ ${q.exp}`:`❌ התשובה: "${q.ans}". ${q.exp}`}</div>
-    <button class="bgold" style="width:100%;margin-top:4px" onclick="nextPassageItem()">הבא ←</button>`:"";
+  const fbCls=G.isOk?"cor":"wrg";
+  const fbTxt=G.isOk?"✅ "+q.exp:"❌ התשובה: \""+q.ans+"\". "+q.exp;
+  const fb=G.showFb?'<div class="fbk '+fbCls+'">'+ fbTxt +'</div><button class="bgold" style="width:100%;margin-top:4px" onclick="nextPassageItem()">הבא ←</button>':''
   document.getElementById("m-body").innerHTML=`
     <div class="qtype-label">שאלת הבנה</div>
     <div class="exQ" style="direction:ltr;text-align:left">${q.q}</div>
@@ -812,8 +868,9 @@ function renderTF(q){
     if(q.ans===true){tCls="cor";if(G.chosen===false)fCls="wrg";}
     else{fCls="cor";if(G.chosen===true)tCls="wrg";}
   }
-  const fb=G.showFb?`<div class="fbk ${G.isOk?'cor':'wrg'}">${G.isOk?`✅ ${q.exp}`:`❌ ${q.exp}`}</div>
-    <button class="bgold" style="width:100%;margin-top:4px" onclick="nextPassageItem()">הבא ←</button>`:"";
+  const fbCls2=G.isOk?"cor":"wrg";
+  const fbTxt2=G.isOk?"✅ "+q.exp:"❌ "+q.exp;
+  const fb=G.showFb?'<div class="fbk '+fbCls2+'">'+ fbTxt2 +'</div><button class="bgold" style="width:100%;margin-top:4px" onclick="nextPassageItem()">הבא ←</button>':''
   document.getElementById("m-body").innerHTML=`
     <div class="qtype-label">נכון / לא נכון</div>
     <div class="exQ" style="direction:ltr;text-align:left">${q.q}</div>
@@ -921,9 +978,8 @@ function checkDrag(answer,exp){
   const placed=[...target.querySelectorAll('.word-chip')].map(c=>c.textContent.trim()).join(" ");
   const ok=placed.toLowerCase()===answer.toLowerCase();
   const fb=document.getElementById("drag-fb");
-  fb.innerHTML=`<div class="fbk ${ok?'cor':'wrg'}" style="margin-top:14px">
-    ${ok?`✅ מצוין! "${answer}" — ${exp}`:`❌ הנסה שוב. הסדר הנכון: "${answer}". ${exp}`}
-  </div>`;
+  const fbMsg = ok ? '✅ מצוין! "' + answer + '" — ' + exp : '❌ הנסה שוב. הסדר הנכון: "' + answer + '". ' + exp;
+  fb.innerHTML = '<div class="fbk ' + (ok?'cor':'wrg') + '" style="margin-top:14px">' + fbMsg + '</div>';
   if(ok){
     G.pts+=35;G.xp=Math.min(100,G.xp+10);G.prog=Math.min(20,G.prog+1);G.eHp=Math.max(0,G.eHp-10);
     G.blog=`✅ <span class="g">מצוין!</span> +35 נקודות!`;
