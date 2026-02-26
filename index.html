@@ -975,7 +975,7 @@ function impersonate(pid){
   document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
   document.getElementById("s-char").classList.add("active");
   renderChars();
-  showToast(\`👁 מתחזה כ-\${G.profile.name}\`,"green");
+  showToast("👁 מתחזה כ-" + G.profile.name,"green");
 }
 
 function stopImpersonate(){
