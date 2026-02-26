@@ -2,7 +2,7 @@
 <html lang="he" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>EnglishQuest 🐉</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600;700&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
@@ -258,7 +258,34 @@ nav{position:sticky;top:0;z-index:200;height:58px;padding:0 20px;
 #toast.red{background:linear-gradient(135deg,rgba(19,12,38,.99),rgba(7,4,15,.99));border:1px solid var(--bloodL);color:var(--bloodL)}
 
 @media(max-width:980px){.glay{grid-template-columns:1fr}.opts{grid-template-columns:1fr}}
-@media(max-width:620px){.cgrid{grid-template-columns:1fr 1fr}.modal{padding:24px 18px}.profiles-grid{grid-template-columns:1fr}}
+@media(max-width:620px){
+  .cgrid{grid-template-columns:1fr 1fr}
+  .modal{padding:20px 16px}
+  .profiles-grid{grid-template-columns:1fr}
+  .login-T{font-size:38px}
+  body{font-size:17px}
+  .exQ{font-size:20px!important}
+  .opt{font-size:17px!important;padding:16px!important}
+  .tf-btn{font-size:18px!important;padding:18px 30px!important}
+  .pasT{font-size:18px!important}
+  .pasTx{font-size:17px!important;line-height:2!important}
+  .word-chip{font-size:17px!important;padding:10px 18px!important}
+  .fbk{font-size:16px!important}
+  .pc-name{font-size:26px!important}
+  .pc-level{font-size:13px!important}
+  .arT{font-size:17px!important}
+  .blogt{font-size:16px!important}
+  nav{height:52px}
+  .nb{font-size:13px!important;padding:7px 12px!important}
+  .nav-pts{font-size:16px!important}
+  .ftic{font-size:56px!important}
+  .vs{font-size:24px!important}
+  .pnl-t{font-size:12px!important}
+  .kv{font-size:14px!important}
+  .qtype-label{font-size:13px!important}
+  .profile-card{padding:24px 18px}
+  .abtns button{font-size:14px!important;padding:14px 18px!important}
+}
 </style>
 </head>
 <body>
@@ -313,9 +340,14 @@ nav{position:sticky;top:0;z-index:200;height:58px;padding:0 20px;
         <span class="pc-tag" style="background:rgba(23,168,144,.1);color:var(--tealL);border:1px solid rgba(23,168,144,.25)">תחבורה</span>
       </div>
     </div>
+    <div class="profile-card" onclick="selectProfile('admin')" style="border-color:rgba(23,168,144,.2);grid-column:1/-1">
+      <span class="pc-emoji">⚙️</span>
+      <div class="pc-name" style="color:var(--tealL);font-size:18px">ממשק ניהול</div>
+      <div class="pc-level">למורה / הורה בלבד</div>
+    </div>
   </div>
   <div style="text-align:center">
-    <div class="api-banner" style="border-radius:12px;display:inline-flex;margin:0 auto">
+    <div class="api-banner" style="border-radius:12px;display:none;margin:0 auto">
       <span>🔑 API Key:</span>
       <input class="api-input" id="api-key-input" type="password" placeholder="sk-ant-api03-..." style="min-width:260px">
       <button class="api-save" onclick="saveApiKey()">שמור</button>
@@ -362,6 +394,16 @@ nav{position:sticky;top:0;z-index:200;height:58px;padding:0 20px;
 </div><!-- end app -->
 
 <script>
+// Load saved API key on startup
+window.addEventListener('DOMContentLoaded', ()=>{
+  const saved=localStorage.getItem("eq_api_key");
+  if(saved){
+    G.apiKey=saved;
+    const inp=document.getElementById("api-key-input");
+    if(inp){inp.value=saved;document.getElementById("api-status").textContent="✅ שמור";}
+  }
+});
+
 /* ═══════════ PROFILES ═══════════ */
 const PROFILES = {
   yoav: {
@@ -369,6 +411,7 @@ const PROFILES = {
     level: "intermediate-high", age: 12,
     topics: ["basketball","entrepreneurship","inventions and inventors","technology","science"],
     grammar: ["Present Simple","Present Continuous","Yes/No questions","WH questions (What/Where/Who/When)"],
+    vocab: ["about", "afraid", "anything", "arrive", "catch a train", "clever", "comfortable", "cost", "Dear", "decide", "directly", "famous", "get off", "get on", "glad", "hit", "island", "leave", "love", "million", "mountain", "nature", "order", "pick", "popular", "reason", "return", "saw", "several", "still", "take something away", "take something off", "take a picture", "take a train", "Take care", "team", "the cold", "thousand", "visitor", "welcome", "a while", "against", "all the time", "almost", "believe", "both", "collect", "come home", "competition", "could", "date", "excellent", "feel well", "full", "get better", "get the flu", "if", "instead", "invite", "keep", "kiss", "make a mistake", "mean", "medical", "message", "miss", "much", "nurse", "only", "perfect", "pocket", "really", "see", "should", "so", "sorry", "tasty", "tell a story"],
     passageStyle: "engaging story or article about basketball players, famous inventors, or startup founders",
     openQuestions: true,
     enemies: [
@@ -381,6 +424,7 @@ const PROFILES = {
     level: "intermediate", age: 12,
     topics: ["dungeons and dragons","magic","adventures and quests","riddles","volleyball"],
     grammar: ["Present Simple","Present Continuous","Yes/No questions","WH questions"],
+    vocab: ["about", "afraid", "anything", "arrive", "catch a train", "clever", "comfortable", "cost", "Dear", "decide", "directly", "famous", "get off", "get on", "glad", "hit", "island", "leave", "love", "million", "mountain", "nature", "order", "pick", "popular", "reason", "return", "saw", "several", "still", "take something away", "take something off", "take a picture", "take a train", "Take care", "team", "the cold", "thousand", "visitor", "welcome", "a while", "against", "all the time", "almost", "believe", "both", "collect", "come home", "competition", "could", "date", "excellent", "feel well", "full", "get better", "get the flu", "if", "instead", "invite", "keep", "kiss", "make a mistake", "mean", "medical", "message", "miss", "much", "nurse", "only", "perfect", "pocket", "really", "see", "should", "so", "sorry", "tasty", "tell a story"],
     passageStyle: "fantasy adventure story with dragons, wizards, or volleyball heroes",
     openQuestions: true,
     enemies: [
@@ -393,6 +437,7 @@ const PROFILES = {
     level: "beginner", age: 9,
     topics: ["colors","food","transport","animals","school"],
     grammar: ["Reading simple sentences","True/False","Multiple choice"],
+    vocab: ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "a", "an", "afraid", "apple", "baby", "ball", "banana", "best", "black", "blue", "book", "brother", "brown", "cake", "can", "chair", "classroom", "crayons", "down", "eyes", "family", "fast", "fat", "father", "feel", "find", "from", "girl", "glue", "good", "grandfather", "grandmother", "gray", "green", "happy", "have", "help", "his", "house", "igloo", "in", "it", "jacket", "jump", "last", "lemon", "like", "listen", "look", "many", "mat", "monkey", "morning", "mother", "my", "name", "near", "on", "open", "orange", "pan", "paper", "pink", "pizza", "play", "please", "pupil", "purple", "queen", "quiet", "read", "right", "scarf", "school", "scissors", "see", "she", "show", "sister", "small", "snake", "stop", "surprised", "tall", "teacher", "television", "the", "there", "this", "to", "tree", "umbrella", "under", "vet", "wet", "white", "window", "woman", "yellow", "zoo", "birthday", "bread", "breakfast", "bring", "carrot", "cheese", "chicken", "children", "chips", "chocolate", "coffee", "come", "cookie", "day", "dinner", "drink", "eat", "eighteen", "eleven", "favorite", "fifteen", "fish", "food", "for", "fourteen", "Friday", "fruit", "hungry", "jam", "juice", "kitchen", "letter", "lunch", "make", "meat", "milkshake", "Monday", "mouth", "need", "nineteen", "onion", "party", "peppers", "restaurant", "salad", "sandwich", "Saturday", "seventeen", "share", "shop", "short", "sixteen", "spinach", "start", "Sunday", "table", "tea", "teeth", "thirsty", "thirteen", "Thursday", "time", "today", "tomato", "tomorrow", "Tuesday", "twelve", "twenty", "vegetable", "want", "wash", "water", "we", "week", "Wednesday", "yesterday", "again", "bake", "bathroom", "bedroom", "boots", "buy", "clean", "close", "closet", "clothes", "coat", "cold", "color", "dollar", "door", "dress", "eighty", "face", "fifty", "flute", "forty", "game", "home", "hundred", "late", "living room", "long", "mirror", "more", "new", "ninety", "nose", "now", "old", "online", "or", "pants", "room", "rule", "same", "seventy", "shirt", "shoes", "sixty", "size", "skirt", "sleep", "smile", "socks", "store", "sweater", "take", "think", "thirty", "too", "wake up", "warm", "wear", "with", "write", "airplane", "age", "beach", "behind", "boat", "by", "car", "city", "cloud", "cool", "cow", "doctor", "drive", "ears", "flowers", "fly", "foot", "feet", "grade", "hair", "hospital", "important", "library", "neighbor", "our", "outside", "park", "people", "picture", "place", "police", "rain", "safe", "sign", "song", "station", "street", "town", "traffic light", "train", "very", "wait", "walk", "work", "your", "afternoon", "April", "August", "beautiful", "change", "cloudy", "date", "December", "every", "fall", "February", "garbage", "garden", "giant", "January", "July", "June", "leaves", "March", "May", "month", "nice", "November", "October", "rainy", "season", "September", "sky", "snow", "snowy", "spring", "summer", "sunny", "weather", "wind", "windy", "winter", "year", "around", "because", "country", "dear", "elephant", "floating", "holiday", "Israel", "market", "photograph", "phone", "travel", "trip", "what", "when", "where", "which", "who", "why", "world"],
     passageStyle: "very simple short paragraph about colors, food, or transport using basic vocabulary only",
     openQuestions: false,
     enemies: [
@@ -472,7 +517,7 @@ let G = {
   exs: [], exI: 0, exType: null,
   chosen: null, showFb: false, isOk: false,
   dragWords: [], dragPlaced: [],
-  apiKey: ""
+  apiKey: "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"
 };
 
 /* ═══════════ UTILS ═══════════ */
@@ -491,11 +536,33 @@ function goTo(sc){
 }
 function saveApiKey(){
   G.apiKey=document.getElementById("api-key-input").value.trim();
-  if(G.apiKey){document.getElementById("api-status").textContent="✅";showToast("✅ API Key נשמר!","green");}
+  if(G.apiKey){
+    localStorage.setItem("eq_api_key",G.apiKey);
+    document.getElementById("api-status").textContent="✅";
+    showToast("✅ API Key נשמר!","green");
+  }
+}
+function loadApiKey(){
+  const saved=localStorage.getItem("eq_api_key");
+  if(saved){
+    G.apiKey=saved;
+    const inp=document.getElementById("api-key-input");
+    if(inp){inp.value=saved;document.getElementById("api-status").textContent="✅ שמור";}
+  }
 }
 
 /* ═══════════ PROFILE SELECT ═══════════ */
+// Password per profile
+const PASSWORDS = {yoav:"yoav123", omer:"omer123", noa:"noa123", admin:"admin999"};
+
 function selectProfile(pid){
+  if(pid==="admin"){
+    const pw=prompt("סיסמת מנהל:");
+    if(pw!==PASSWORDS.admin){showToast("סיסמה שגויה","red");return;}
+    showAdminPanel();return;
+  }
+  const pw=prompt(`סיסמת ${PROFILES[pid].name}:`);
+  if(pw!==PASSWORDS[pid]){showToast("סיסמה שגויה ❌","red");return;}
   G.profile = PROFILES[pid];
   G.pts=0;G.hp=100;G.eHp=100;G.xp=0;G.prog=0;G.eIdx=0;
   G.blog=`ברוך הבא ${G.profile.name}! המסע מתחיל...`;
@@ -892,6 +959,68 @@ function sessionComplete(){
 }
 
 function closeModal(){document.getElementById("overlay").classList.remove("open");renderGame();}
+
+function impersonate(pid){
+  closeModal();
+  G.profile = PROFILES[pid];
+  G.pts=0;G.hp=100;G.eHp=100;G.xp=0;G.prog=0;G.eIdx=0;
+  G.blog=`מנהל מתחזה כ-${G.profile.name}`;
+  G.selChar=null;G.char=null;
+  // Show impersonation banner
+  document.getElementById("profile-nav-badge").innerHTML=`
+    <span class="profile-badge" style="border-color:#22d9bc;color:#22d9bc;background:rgba(23,168,144,.1)">
+      👁 מתחזה: ${G.profile.emoji} ${G.profile.name}
+    </span>
+    <button onclick="stopImpersonate()" style="margin-right:8px;padding:4px 10px;background:rgba(194,69,16,.15);border:1px solid rgba(194,69,16,.4);border-radius:4px;color:var(--ember2);cursor:pointer;font-family:var(--S);font-size:10px">עצור</button>`;
+  document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+  document.getElementById("s-char").classList.add("active");
+  renderChars();
+  showToast(\`👁 מתחזה כ-\${G.profile.name}\`,"green");
+}
+
+function stopImpersonate(){
+  G.profile=null;G.char=null;G.selChar=null;
+  goTo("profiles");
+  showToast("חזרת למסך הניהול");
+}
+
+function showAdminPanel(){
+  document.getElementById("overlay").classList.add("open");
+  document.getElementById("m-type").textContent="⚙️ ממשק ניהול";
+  document.getElementById("m-meta").textContent="סטטוס ילדים";
+  document.getElementById("m-body").innerHTML=`
+    <div style="margin-bottom:20px">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px">
+        ${Object.entries(PROFILES).map(([k,p])=>`
+          <div style="background:rgba(0,0,0,.3);border:1px solid rgba(219,168,74,.15);border-radius:10px;padding:16px;text-align:center">
+            <div style="font-size:32px;margin-bottom:6px">${p.emoji}</div>
+            <div style="font-family:var(--T);color:var(--gold);font-size:14px;margin-bottom:4px">${p.name}</div>
+            <div style="font-family:var(--S);font-size:10px;color:var(--textD);letter-spacing:1px;margin-bottom:10px">${p.level}</div>
+            <button onclick="impersonate('${k}')" 
+              style="width:100%;padding:7px;background:rgba(219,168,74,.1);border:1px solid rgba(219,168,74,.3);border-radius:5px;color:var(--gold);cursor:pointer;font-family:var(--S);font-size:11px;letter-spacing:1px">
+              👁 כנס כ-${p.name}
+            </button>
+          </div>`).join("")}
+      </div>
+      <div style="background:rgba(23,168,144,.06);border:1px solid rgba(23,168,144,.18);border-radius:10px;padding:16px;font-family:var(--S);font-size:12px;color:var(--tealL);line-height:2">
+        🔑 <strong>סיסמאות ילדים:</strong><br>
+        יואב: <strong>yoav123</strong> &nbsp;|&nbsp; עומר: <strong>omer123</strong> &nbsp;|&nbsp; נועה: <strong>noa123</strong><br>
+        <br>
+        📋 <strong>הנחיות:</strong><br>
+        • כל ילד נכנס עם הסיסמה שלו בלבד<br>
+        • שלחי לכל ילד את הקישור + הסיסמה שלו<br>
+        • ניתן לשנות סיסמאות בקוד (שורת PASSWORDS)
+      </div>
+      <div style="margin-top:16px;background:rgba(219,168,74,.06);border:1px solid rgba(219,168,74,.15);border-radius:10px;padding:16px;font-family:var(--S);font-size:12px;color:var(--gold);line-height:2">
+        🔗 <strong>הקישור לשיתוף:</strong><br>
+        <span style="direction:ltr;display:block;font-size:11px;color:var(--textD)">https://meravash.github.io/englishquest</span>
+        <button onclick="navigator.clipboard.writeText('https://meravash.github.io/englishquest').then(()=>showToast('✅ הועתק!','green'))" 
+          style="margin-top:8px;padding:6px 16px;background:rgba(219,168,74,.12);border:1px solid rgba(219,168,74,.3);border-radius:5px;color:var(--gold);cursor:pointer;font-family:var(--S);font-size:11px">
+          📋 העתק קישור
+        </button>
+      </div>
+    </div>`;
+}
 </script>
 </body>
 </html>
