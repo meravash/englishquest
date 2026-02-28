@@ -627,6 +627,15 @@ function pwSubmit(){
     </span>`;
   document.getElementById("s-profiles").classList.remove("active");
   document.getElementById("s-char").classList.add("active");
+  // Load previously saved char for this profile
+  const savedCharId = localStorage.getItem("eq_char_"+G.profile.name);
+  if(savedCharId){
+    G.selChar = CHARS.find(c=>c.id===savedCharId);
+    document.getElementById("start-btn").disabled = false;
+  } else {
+    G.selChar = null;
+    document.getElementById("start-btn").disabled = true;
+  }
   renderChars();
 }
 
@@ -644,12 +653,18 @@ function renderChars(){
         </div>`).join("")}</div>
     </div>`).join("");
 }
-function selChar(id){G.selChar=CHARS.find(c=>c.id===id);document.getElementById("start-btn").disabled=false;renderChars();}
+function selChar(id){
+  G.selChar=CHARS.find(c=>c.id===id);
+  // Save char choice per profile
+  if(G.profile) localStorage.setItem("eq_char_"+G.profile.name, id);
+  document.getElementById("start-btn").disabled=false;
+  renderChars();
+}
 function doStart(){
   if(!G.selChar||!G.profile)return;
   G.char=G.selChar;
   goTo("game");
-  showToast(`⚔️ ${G.profile.name} + ${G.char.name} — יאללה!`,"green");
+  showToast("⚔️ " + G.profile.name + " + " + G.char.name + " — יאללה!","green");
 }
 
 /* ═══════════ GAME RENDER ═══════════ */
@@ -955,9 +970,9 @@ function renderDragUI(q,shuffled){
       ondragover="event.preventDefault();this.classList.add('drag-over')"
       ondragleave="this.classList.remove('drag-over')"
       ondrop="dropWord(event)">
-      <span id="drag-placeholder" style="color:var(--textD);font-size:13px;font-style:italic">גרור/י מילים לכאן...</span>
+      <span id="drag-placeholder" style="color:var(--textD);font-size:16px;font-style:italic">לחץ/י על מילה להוסיף ↓</span>
     </div>
-    <div class="drag-sentence-label">מחסן מילים:</div>
+    <div class="drag-sentence-label">מחסן מילים — לחץ/י להוסיף:</div>
     <div class="word-bank" id="word-bank"
       ondragover="event.preventDefault()"
       ondrop="returnWord(event)">
@@ -972,8 +987,16 @@ function renderDragUI(q,shuffled){
     <div id="drag-fb"></div>`;
 }
 
+// ══ TOUCH + MOUSE DRAG SYSTEM ══
 let dragIdx=null;
-function dragStart(e,i){dragIdx=i;e.target.classList.add('dragging');e.dataTransfer.setData('text/plain',i);}
+let touchDragEl=null;
+let touchClone=null;
+
+function dragStart(e,i){
+  dragIdx=i;
+  e.target.classList.add('dragging');
+  if(e.dataTransfer) e.dataTransfer.setData('text/plain',i);
+}
 function dragEnd(e){e.target.classList.remove('dragging');}
 
 function dropWord(e){
@@ -981,27 +1004,51 @@ function dropWord(e){
   const target=document.getElementById("drag-target");
   target.classList.remove('drag-over');
   const i=parseInt(e.dataTransfer.getData('text/plain'));
-  const chip=document.getElementById("wc-"+i);
-  if(!chip)return;
-  const placeholder=document.getElementById("drag-placeholder");
-  if(placeholder)placeholder.remove();
-  chip.classList.add('placed');
-  chip.setAttribute('ondragstart',`dragStart(event,${i})`);
-  target.appendChild(chip);
-  G.dragPlaced.push(i);
+  moveWordToTarget(i);
 }
 
 function returnWord(e){
   e.preventDefault();
   const i=parseInt(e.dataTransfer.getData('text/plain'));
+  moveWordToBank(i);
+}
+
+function moveWordToTarget(i){
+  const chip=document.getElementById("wc-"+i);
+  if(!chip)return;
+  const target=document.getElementById("drag-target");
+  if(!target)return;
+  const placeholder=document.getElementById("drag-placeholder");
+  if(placeholder)placeholder.remove();
+  chip.classList.add('placed');
+  target.appendChild(chip);
+  if(!G.dragPlaced.includes(i)) G.dragPlaced.push(i);
+}
+
+function moveWordToBank(i){
   const chip=document.getElementById("wc-"+i);
   if(!chip)return;
   chip.classList.remove('placed');
-  document.getElementById("word-bank").appendChild(chip);
+  const bank=document.getElementById("word-bank");
+  if(bank) bank.appendChild(chip);
   G.dragPlaced=G.dragPlaced.filter(x=>x!==i);
-  if(document.getElementById("drag-target").children.length===0){
-    document.getElementById("drag-target").innerHTML='<span id="drag-placeholder" style="color:var(--textD);font-size:13px;font-style:italic">גרור/י מילים לכאן...</span>';
+  const target=document.getElementById("drag-target");
+  if(target && target.querySelectorAll('.word-chip').length===0){
+    target.innerHTML='<span id="drag-placeholder" style="color:var(--textD);font-size:16px;font-style:italic">לחץ/י על מילה להוסיף ↓</span>';
   }
+}
+
+// TOUCH / CLICK system - tap to move words
+function setupWordChipTap(chip, i){
+  chip.addEventListener('click', function(){
+    const inTarget = this.closest('#drag-target');
+    const inBank = this.closest('#word-bank');
+    if(inBank){
+      moveWordToTarget(i);
+    } else if(inTarget){
+      moveWordToBank(i);
+    }
+  });
 }
 
 function resetDrag(){
