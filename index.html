@@ -396,7 +396,7 @@ nav{position:sticky;top:0;z-index:200;height:58px;padding:0 20px;
     <div class="logo" onclick="goTo('game')">English<em>Quest</em></div>
     <div class="nav-btns">
       <button class="nb on" onclick="goTo('game')">⚔️ מסע</button>
-      <button class="nb" onclick="goTo('profiles')">👤 החלף</button>
+      <button class="nb" onclick="logoutProfile()">🔄 החלף</button>
     </div>
     <div class="nav-r">
       <div class="nav-pts" id="nav-pts">⭐ 0</div>
@@ -430,13 +430,42 @@ nav{position:sticky;top:0;z-index:200;height:58px;padding:0 20px;
 </div><!-- end app -->
 
 <script>
-// Load saved API key on startup
 window.addEventListener('DOMContentLoaded', ()=>{
-  const saved=localStorage.getItem("eq_api_key");
-  if(saved){
-    G.apiKey=saved;
-    const inp=document.getElementById("api-key-input");
-    if(inp){inp.value=saved;document.getElementById("api-status").textContent="✅ שמור";}
+  // Load saved API key
+  const savedKey=localStorage.getItem("eq_api_key");
+  if(savedKey){ G.apiKey=savedKey; }
+
+  // Check if this device already has a logged-in profile
+  const loggedIn = localStorage.getItem("eq_logged_in");
+  if(loggedIn && PROFILES[loggedIn]){
+    // Skip profile selection - go straight to game
+    G.profile = PROFILES[loggedIn];
+    document.getElementById("profile-nav-badge").innerHTML=`
+      <span class="profile-badge" style="border-color:${G.profile.color};color:${G.profile.color}">
+        ${G.profile.emoji} ${G.profile.name}
+      </span>`;
+    // Load saved char
+    const savedCharId = localStorage.getItem("eq_char_"+G.profile.name);
+    if(savedCharId){
+      G.selChar = CHARS.find(c=>c.id===savedCharId);
+      G.char = G.selChar;
+    }
+    // Load saved progress
+    const savedProg = loadProgress(G.profile.name);
+    if(savedProg && G.char){
+      G.pts=savedProg.pts||0; G.hp=savedProg.hp||100; G.eHp=savedProg.eHp||100;
+      G.xp=savedProg.xp||0; G.prog=savedProg.prog||0; G.eIdx=savedProg.eIdx||0;
+      G.blog = "ברוך הבא חזרה " + G.profile.name + "!";
+      // Go directly to game
+      document.getElementById("s-profiles").classList.remove("active");
+      document.getElementById("s-game").classList.add("active");
+      renderGame();
+    } else {
+      // Has profile but no char yet - go to char select
+      document.getElementById("s-profiles").classList.remove("active");
+      document.getElementById("s-char").classList.add("active");
+      renderChars();
+    }
   }
 });
 
@@ -652,6 +681,8 @@ function pwSubmit(){
     <span class="profile-badge" style="border-color:${G.profile.color};color:${G.profile.color}">
       ${G.profile.emoji} ${G.profile.name}
     </span>`;
+  // Remember this profile on this device forever
+  localStorage.setItem("eq_logged_in", pid);
   document.getElementById("s-profiles").classList.remove("active");
   document.getElementById("s-char").classList.add("active");
   // Load previously saved char for this profile
@@ -1167,6 +1198,17 @@ function stopImpersonate(){
   G.profile=null;G.char=null;G.selChar=null;
   goTo("profiles");
   showToast("חזרת למסך הניהול");
+}
+
+function logoutProfile(){
+  // Only logout if confirmed - so child doesn't accidentally press
+  const confirmMsg = "להחליף משתמש? תצטרך/י להכניס סיסמה שוב.";
+  if(!confirm(confirmMsg)) return;
+  localStorage.removeItem("eq_logged_in");
+  G.profile=null; G.char=null; G.selChar=null;
+  document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+  document.getElementById("s-profiles").classList.add("active");
+  showToast("התנתקת בהצלחה");
 }
 
 function showAdminPanel(){
