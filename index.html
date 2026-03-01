@@ -587,6 +587,33 @@ function loadApiKey(){
   }
 }
 
+function saveProgress(){
+  if(!G.profile) return;
+  const key = "eq_progress_" + G.profile.name;
+  const data = {
+    pts: G.pts, hp: G.hp, eHp: G.eHp,
+    xp: G.xp, prog: G.prog, eIdx: G.eIdx,
+    charId: G.char ? G.char.id : null,
+    savedAt: new Date().toLocaleDateString('he-IL')
+  };
+  localStorage.setItem(key, JSON.stringify(data));
+}
+
+function loadProgress(profileName){
+  const key = "eq_progress_" + profileName;
+  const saved = localStorage.getItem(key);
+  if(saved){
+    try { return JSON.parse(saved); }
+    catch(e){ return null; }
+  }
+  return null;
+}
+
+function resetProgress(profileName){
+  localStorage.removeItem("eq_progress_" + profileName);
+  localStorage.removeItem("eq_char_" + profileName);
+}
+
 /* ═══════════ PROFILE SELECT ═══════════ */
 // Password per profile
 const PASSWORDS = {yoav:"yoav123", omer:"omer123", noa:"noa123", admin:"admin999"};
@@ -663,8 +690,20 @@ function selChar(id){
 function doStart(){
   if(!G.selChar||!G.profile)return;
   G.char=G.selChar;
-  goTo("game");
-  showToast("⚔️ " + G.profile.name + " + " + G.char.name + " — יאללה!","green");
+  // Load saved progress for this profile
+  const saved = loadProgress(G.profile.name);
+  if(saved && saved.charId === G.char.id){
+    G.pts=saved.pts||0; G.hp=saved.hp||100; G.eHp=saved.eHp||100;
+    G.xp=saved.xp||0; G.prog=saved.prog||0; G.eIdx=saved.eIdx||0;
+    G.blog = "ברוך הבא חזרה " + G.profile.name + "! ממשיך/ה מאיפה שעצרת...";
+    goTo("game");
+    showToast("📍 ממשיך/ה מ-" + saved.savedAt + " · " + saved.pts + " נקודות","green");
+  } else {
+    G.pts=0; G.hp=100; G.eHp=100; G.xp=0; G.prog=0; G.eIdx=0;
+    G.blog = "ברוך הבא " + G.profile.name + "! המסע מתחיל...";
+    goTo("game");
+    showToast("⚔️ " + G.profile.name + " + " + G.char.name + " — יאללה!","green");
+  }
 }
 
 /* ═══════════ GAME RENDER ═══════════ */
@@ -902,6 +941,7 @@ function answerMC(i){
   G.chosen=opt;G.showFb=true;G.isOk=ok;
   if(ok){G.pts+=25;G.xp=Math.min(100,G.xp+6);G.prog=Math.min(20,G.prog+1);G.eHp=Math.max(0,G.eHp-8);G.blog=`✅ <span class="g">תשובה נכונה!</span> +25 נקודות!`;}
   else{G.hp=Math.max(0,G.hp-5);G.blog=`🐉 <span class="f">האויב תוקף!</span> -5 HP`;}
+  saveProgress();
   renderMC(q);
 }
 
@@ -932,6 +972,7 @@ function answerTF(val){
   G.chosen=val;G.showFb=true;G.isOk=ok;
   if(ok){G.pts+=20;G.xp=Math.min(100,G.xp+5);G.prog=Math.min(20,G.prog+1);G.eHp=Math.max(0,G.eHp-6);G.blog=`✅ <span class="g">נכון!</span> +20 נקודות!`;}
   else{G.hp=Math.max(0,G.hp-5);G.blog=`🐉 <span class="f">לא נכון!</span> -5 HP`;}
+  saveProgress();
   renderTF(q);
 }
 
@@ -1141,8 +1182,12 @@ function showAdminPanel(){
             <div style="font-family:var(--T);color:var(--gold);font-size:14px;margin-bottom:4px">${p.name}</div>
             <div style="font-family:var(--S);font-size:10px;color:var(--textD);letter-spacing:1px;margin-bottom:10px">${p.level}</div>
             <button onclick="impersonate('${k}')" 
-              style="width:100%;padding:7px;background:rgba(219,168,74,.1);border:1px solid rgba(219,168,74,.3);border-radius:5px;color:var(--gold);cursor:pointer;font-family:var(--S);font-size:11px;letter-spacing:1px">
+              style="width:100%;padding:7px;background:rgba(219,168,74,.1);border:1px solid rgba(219,168,74,.3);border-radius:5px;color:var(--gold);cursor:pointer;font-family:var(--S);font-size:11px;letter-spacing:1px;margin-bottom:5px">
               👁 כנס כ-${p.name}
+            </button>
+            <button onclick="resetProgress('${k}');showToast('🔄 התקדמות ${p.name} אופסה','red')" 
+              style="width:100%;padding:6px;background:rgba(122,21,21,.1);border:1px solid rgba(122,21,21,.3);border-radius:5px;color:var(--bloodL);cursor:pointer;font-family:var(--S);font-size:10px;letter-spacing:1px">
+              🔄 אפס התקדמות
             </button>
           </div>`).join("")}
       </div>
